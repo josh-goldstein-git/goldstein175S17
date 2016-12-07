@@ -1,0 +1,1 @@
+../Inventory/lab_1_world_pop_smaller.Rmd

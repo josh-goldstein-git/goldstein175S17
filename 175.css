@@ -1,0 +1,82 @@
+
+body {
+    xxbackground-color: #FFFFC6;
+    background-image:url(http://lab.demog.berkeley.edu/img/pagelink-bg.gif);
+    color: #000;
+    font: normal 1em Verdana, Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+#menutop{
+    font-family:'Gill Sans', Arial, sans-serif; font-size:14pt;
+    padding:1em;
+    background-color:#252C58}
+
+#menutop ul {
+    margin-left: 0;
+    padding-left: 0;
+    display: inline;
+}
+
+#menutop ul li {
+    margin-left: 0;
+    padding: 3px 15px;
+    border-left: 1px solid #000;
+    list-style: none;
+    display: inline;
+}
+
+#menutop a {
+    color:gold;}
+
+#menutop a:hover{
+    text-decoration:none;
+    font-style:italic;
+}
+
+table.menu{align:center;background-color:#5491A8;}
+
+td.menu{
+    border:2; border-style: groove; padding:20;color:white;}
+                              
+A.menu { color:white;#6633DD;
+         font-family:'Gill Sans', Arial, sans-serif; font-size:14pt;
+         text-decoration: none}
+         
+
+ /* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+ 
+   visibility: hidden;
+    width: 480px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: .85;
+}

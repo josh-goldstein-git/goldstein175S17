@@ -1,0 +1,110 @@
+---
+title: "Econ/Demog C175 Economic Demography, Lab 0 ('Sandbox')"
+output: html_notebook
+---
+
+Version: Dec 6, 2016 (last edits JRG)
+
+Here we give a very, very brief introduction to R and the RStudio Notebook. This Lab is a 'Sandbox' for you to experiment with. It is not required, and you don't need to turn anything in. It is designed for first time users of R and RStudio.
+
+# Our first R code
+
+The text part of the notebook (like this sentence) is just text and will be ignored by R. But the R code chunk below can be executed within RStudio.
+
+```{r}
+# Anything in chunk after a hashtag are comments -- and will be ignored by R
+x <- 3
+x * x
+```
+
+If you click on the green "play" button at the right of the chunk, it will submit this code to R and display "[1] 9" right after the code chunk. It will have no line number.
+
+Let's deconstruct line by line, what the code chunk did. 
+
+Line 14: "```{r}"    Tells RStudio that you have begun R code chunk 
+Line 15: "# Anything ..." A comment
+Line 16: "x <- 3"  Assigns the value "3" to the variable named "x": "<-" means "gets"
+Line 17: "x * x"  Computes "x" times "x" and displays
+Line 18: "```"  Tells RStudio to end the code chunk
+
+# Exercises
+
+1. Edit the code chunk on lines 14-18 so that the value assigned to "x" is 3 instead of 4. Rerun. You should get it to display "[1] 16""
+
+2. Assign the value of "x * x" to a new variable called "y" by changing line "x * x" to "y <- x * x". Rerun. (Nothing will display.)
+
+3. Display the value of "y" by adding "print(y)" or "y" after the value "y" has been created.
+
+# A second code chunk on population growth
+
+The current growth rate of world population is about 1 percent per year. The current world population size is about 7.3 billion. Let's calculate how big the population will be in 2100 (in 83 years) if the growth rate stays the same.
+
+We'll implement our formula for exponential growth
+$$
+N(t) = N(0) e^{R t}
+$$
+
+
+```{r}
+N.2017 <- 7.3  # Billions of people
+N.2100.estimated <- N.2017 * exp(.01 * 83)   # N(0) e^{R t}
+print(N.2100.estimated)
+```
+We get about 17 billion, more than twice as many people as there are today.
+
+# Exercises
+
+1. Change the growth rate to 0.5 %. How many people would there be in 2100?
+(The answer is about 11 billion).
+
+2. How many people would there be with 1% growth until 2200?
+
+3. Insert a new line at the beginning of the code chunk, defining a variable called "R <- .01" (The letter "R" has nothing to do with the program. It's just the letter demographers use for the exponential growth rate). Use this in the exponential growth rate formula instead of 0.01. It should give you the same answer.
+
+# A final code chunk on exponential growth, using vectors.
+
+R can work with vectors with multiple elements, as well scalars with just a single value. Here is an example of how to use vectors to calculate the future value of the population for every year from 2017 to 2100.
+
+```{r}
+R <- .01
+years.in.future.vec <- 0:83 # the ":" creates a sequence of numbers
+print(length(years.in.future.vec)) # the length of the vector, should be 84
+N.future.vec <- N.2017 * exp(R * years.in.future.vec)
+print(N.future.vec) # 84 values will be displayed
+```
+
+# Making a graph
+
+```{r}
+# we use plot() function, assigning arguments with "=", with commas as separators
+plot("x" = years.in.future.vec, "y" = N.future.vec) 
+title("Our first graph")
+```
+
+A fancier version could be
+```{r}
+year.vec <- years.in.future.vec + 2017
+plot(x = year.vec, 
+     y = N.future.vec,
+     ylab = "Billions", # label of y axis
+     type = "l")        # changes points to "l", can try "b"
+title("Future world population assuming 1% growth per year")
+```
+
+# Conclusion
+
+Congratulations! You've worked your way through the whole Notebook! 
+
+You've already learned a lot, including
+
+* How to create an executable code chunk
+* How to assign a value to a variable in R
+* How to display the values of a variable
+* How to work with vectors
+* How to make a simple plot
+
+We'll be reviewing most of this material in the labs that follow.
+
+
+
+

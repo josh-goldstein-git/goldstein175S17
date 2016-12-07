@@ -1,0 +1,9 @@
+{
+    "path" : "~/Inventory",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
