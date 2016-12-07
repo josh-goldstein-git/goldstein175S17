@@ -103,7 +103,7 @@ You should get $0.00536155$, about 0.5 percent. (Hint: If you're still getting 0
 
 First we're going to read in data from a file that we've placed on the course lab website.
 ```{r}
- dat <- read.table("http://u.demog.berkeley.edu/~josh/world_population_data.txt",
+ dat <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/world_population_data.txt",
                   header =T)
 dat
 ```

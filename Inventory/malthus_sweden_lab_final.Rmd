@@ -5,8 +5,8 @@ output: html_notebook
 
 ```{r}
 tot = 0
-source("http://u.demog.berkeley.edu/~josh/tmp2.R")
-source("http://u.demog.berkeley.edu/~josh/check_functions.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/tmp2.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
 ```
 
 
@@ -40,9 +40,8 @@ of Malthusian regime in the 19th and 20th centuries.
 # Part 0: Import the data
 
 ```{r}
-## df <- read.table("SWE_pop_birth_death.txt", header = T)
-df <- read.table("http://u.demog.berkeley.edu/~josh/SWE_pop_birth_death.txt",
-                  header =T)
+df <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/SWE_pop_birth_death.txt",
+                 header =T)
 
 
 ## Note: if this doesn't work, check to see that you've saved this file in a folder marked lab1 and that your R working directory for your R session is set to "lab1".
