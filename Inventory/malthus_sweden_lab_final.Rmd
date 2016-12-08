@@ -5,7 +5,7 @@ output: html_notebook
 
 ```{r}
 tot = 0
-source("http://courses.demog.berkeley.edu/goldstein175/Basket/tmp2.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_malthus.R")
 source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
 ```
 
@@ -40,8 +40,8 @@ of Malthusian regime in the 19th and 20th centuries.
 # Part 0: Import the data
 
 ```{r}
-df <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/SWE_pop_birth_death.txt",
-                 header =T)
+url <- "http://courses.demog.berkeley.edu/goldstein175/Basket/SWE_pop_birth_death.txt"
+df <- read.table(url, header =T)
 
 
 ## Note: if this doesn't work, check to see that you've saved this file in a folder marked lab1 and that your R working directory for your R session is set to "lab1".
@@ -150,7 +150,7 @@ check(answer1.4)
 
 Let's get the births and deaths on a per capita basis. Demographers call these crude rates. ("Crude" because we don't refine the population at risk -- for example, we include women and men in the denominator of the birth rate.)
 
-```{r get.rates, fig.height=3}
+```{r get.rates, fig.height=5}
 cbr = B/N                               # crude birth rate
 cdr = D/N                               # crude death rate
 par(mfrow = c(2,1))                     # two panels in one plot
@@ -180,8 +180,8 @@ C.  In 1773, the same year as the peak number of deaths
 
 ```{r}
 ## Replace the NA with your answer (e.g., 'A' in quotes)
-answer2.1 = NA
-check(answer2.1)
+answer2.2 = NA
+check(answer2.2)
 ```
 
 Q2.3 Google "1773 Sweden". What happened in this year?
