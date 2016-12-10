@@ -207,7 +207,7 @@ C.  The borders of Sweden changed.
 {{
 qnumber = 2.3
 correct.answer = "B"
-hint = ""
+hint = "There wasn't a war"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
 explanation = "The 1773 famine was a catastrophic event. An
 inspiration for Malthus's thinking?."

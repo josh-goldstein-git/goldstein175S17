@@ -84,7 +84,7 @@ N.2000.check
 Which is "6127", the correct value for the world population in 2000.
 
 Now let's calculate the exponential growth rate for the
-fifty years from 1950 to 1900. We need to alter the code below to
+fifty years from 1850 to 1900. We need to alter the code below to
 get the right answer.
 
 ```{r}
@@ -241,7 +241,7 @@ any other tool. You don't have to use R.
 
 Hint 3: You should get a population roughly 20 time as large as today.
 
-Note: Imagine we we increased the reproduction rate of each generation
+Note: Imagine we increased the reproduction rate of each generation
 by 1%. So, for example, instead of each woman having on average 1
 surviving daughter, imagine she had 1.01 surviving daughters. If
 generations were 30 years in length, then this would mean an increase

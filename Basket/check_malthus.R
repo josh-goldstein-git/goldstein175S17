@@ -43,7 +43,7 @@
 {{
 .qnumber2.3 = 2.3
 .correct.answer2.3 = "B"
-.hint2.3 = ""
+.hint2.3 = "There wasn't a war"
 .instructions2.3 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation2.3 = "The 1773 famine was a catastrophic event. An
 .inspiration for Malthus's thinking?."

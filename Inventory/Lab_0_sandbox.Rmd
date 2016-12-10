@@ -19,9 +19,9 @@ x * x
 
 If you click on the green "play" button at the right of the chunk, it will submit this code to R and display "[1] 9" right after the code chunk. It will have no line number.
 
-Let's deconstruct line by line, what the code chunk did. 
+Let's deconstruct line by line, what the code chunk did.
 
-Line 14: "```{r}"    Tells RStudio that you have begun R code chunk 
+Line 14: "```{r}"    Tells RStudio that you have begun R code chunk
 Line 15: "# Anything ..." A comment
 Line 16: "x <- 3"  Assigns the value "3" to the variable named "x": "<-" means "gets"
 Line 17: "x * x"  Computes "x" times "x" and displays
@@ -29,7 +29,7 @@ Line 18: "```"  Tells RStudio to end the code chunk
 
 # Exercises
 
-1. Edit the code chunk on lines 14-18 so that the value assigned to "x" is 3 instead of 4. Rerun. You should get it to display "[1] 16""
+1. Edit the code chunk on lines 14-18 so that the value assigned to "x" is 4 instead of 3. Rerun. You should get it to display "[1] 16""
 
 2. Assign the value of "x * x" to a new variable called "y" by changing line "x * x" to "y <- x * x". Rerun. (Nothing will display.)
 
@@ -77,14 +77,14 @@ print(N.future.vec) # 84 values will be displayed
 
 ```{r}
 # we use plot() function, assigning arguments with "=", with commas as separators
-plot("x" = years.in.future.vec, "y" = N.future.vec) 
+plot("x" = years.in.future.vec, "y" = N.future.vec)
 title("Our first graph")
 ```
 
 A fancier version could be
 ```{r}
 year.vec <- years.in.future.vec + 2017
-plot(x = year.vec, 
+plot(x = year.vec,
      y = N.future.vec,
      ylab = "Billions", # label of y axis
      type = "l")        # changes points to "l", can try "b"
@@ -93,7 +93,7 @@ title("Future world population assuming 1% growth per year")
 
 # Conclusion
 
-Congratulations! You've worked your way through the whole Notebook! 
+Congratulations! You've worked your way through the whole Notebook!
 
 You've already learned a lot, including
 
