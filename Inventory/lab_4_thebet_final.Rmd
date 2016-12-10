@@ -3,9 +3,10 @@ title: "The Bet: Over and over again"
 output: html_notebook
 ---
 
+
 Julian Simon liked to proclaim that
 
-> The only true measure of scarcity is price ...  
+> The only true measure of scarcity is price ...
 
 In this lab we are going to take advantage of a database put together by David Jacks. The data for his paper "From Boom to Bust: A Typology of Real Commodity Prices in the Long Run" (2013, NBER Working Paper 18874) has consistent series of commodity prices for everything ranging from barley to zinc. For our lab we've selected prices since 1900.
 
@@ -15,6 +16,13 @@ We're going to ask the following:
 2. Was Simon lucky to have won the bet?
 3. Do the rises or absence of rises differ for commodities in a way that we can understand?
 4. Finally, we will use our Malthusian "harvest" model to learn about renewable resources.
+
+
+```{r}
+tot = 0
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_thebet.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
+```
 
 
 # 1. Read in data and graph trends in commodity prices
@@ -104,7 +112,7 @@ check(answer2.1)
 
 Plot the price of tin. You can use the same code we used for Chromium, modifying just slightly.
 ```{r}
-## put your code for Tin here 
+## put your code for Tin here
 ```
 Let's add a vertical line at 1980 when Ehrlich chose Tin.
 ```{r}
@@ -147,7 +155,7 @@ A. Simon
 
 B. Ehrlich
 
-C. Neither, because the value of the basket doesn't tell us if 
+C. Neither, because the value of the basket doesn't tell us if
 *all* of the commodities increased in price at the same time.
 
 ```{r}
@@ -308,7 +316,7 @@ text(1960, -250, "Simon wins", col = "red")
 
 A change in the supply of a particular commodity may or may not cause a price change -- depending on the availability of substitutes. You will use the results form Q4.1 and Q4.2 for the write-up of your graded questions below.
 
-Q5.1 Pick a commodity that you think has a lot of substitutes and see what fraction of the all of the 10 year bets from 1900 to 2005 Ehrlich would have won. 
+Q5.1 Pick a commodity that you think has a lot of substitutes and see what fraction of the all of the 10 year bets from 1900 to 2005 Ehrlich would have won.
 
 Q5.2 Repeat Q4.1 for a commodity that you think is difficult to substitute for.
 
@@ -342,12 +350,12 @@ check old homework, improve.
 
 2. Was Simon "lucky"" or "right"? [Explain your answer in a 2 or 3 sentences.]
 
-3. Discuss the results of your analysis of an easily substitutable commodity. 
+3. Discuss the results of your analysis of an easily substitutable commodity.
   i. Tell why you think that that commodity would be easily substituble, explaining what "service" it provides. (1 or 2 sentences)
   ii. What did your analysis tell you about whether prices consistently increased? (1 - 2 sentences)
   iii. Interpret your results (1 - 2 sentences)
 
-4. Repeat question 3, but for the commodity you thought would be hard to substitute for. 
+4. Repeat question 3, but for the commodity you thought would be hard to substitute for.
 
 5. Did your results in 3 and 4 differ substantially from each other or from the results of Ehrlich and Simon's bet? (1 or 2 sentences is fine)
 
