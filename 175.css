@@ -34,6 +34,7 @@ body {
     font-style:italic;
 }
 
+
 table.menu{align:center;background-color:#5491A8;}
 
 td.menu{
@@ -43,7 +44,11 @@ A.menu { color:white;#6633DD;
          font-family:'Gill Sans', Arial, sans-serif; font-size:14pt;
          text-decoration: none}
          
-
+/* urgent warning */
+.urgent {
+    border:2; border-style: groove; padding:20;color:white;
+    background-color:#FF4B4B;max-width:500px;
+}
  /* Tooltip container */
 .tooltip {
     position: relative;
