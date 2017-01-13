@@ -12,3 +12,9 @@ final.filename = "malthus_sweden_lab_final.Rmd",
 answer.key.filename = "check_malthus.R")
 ```
 
+To update and make labs live
+
+Best to pull first and then do the following ... but if you edited the
+files without pulling, you can push and git will warn and interact with you.
+
+

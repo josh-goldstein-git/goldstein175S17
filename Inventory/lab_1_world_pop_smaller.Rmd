@@ -3,16 +3,22 @@ title: "Econ/Demog C175 Lab 1: World Population Growth"
 output: html_notebook
 ---
 
+!!!!!!!!!!!!!!! Note this is not final and needs at least!!!
+!!!! (1) fixing bcourses question
+!!!! (2) modifying note of where ended demo
+
+
 # Overview
 
 This is the first lab of Economic Demography (Econ/Demog C175). Our
 goals in this first lab are:
 
-1. To use the exponential model to learn
-about world population history
-
-2. To get everyone started programming and doing their assignments
+1. To get everyone started programming and doing their assignments
    with R, RStudio, and bCourses.
+
+
+2. To use the exponential model to learn about world population history
+
 
 
 > This document is written in the "R markdown" format and should be
@@ -24,6 +30,11 @@ about world population history
 
 # Writing and executing R commands
 
+(Note: In addition to this introduction, do read "The Rstudio
+175 cloud server for Demog/Econ C175" by Carl Mason available at
+[https://courses.demog.berkeley.edu/goldstein175] , which provides
+additional information.)
+
 In the RStudio Notebook, we can write and execute R commands in the
 same document that we are writing text in by creating a "code chunk."
 To open a code chunk, we type "```{r}"" to start. To close the code
@@ -33,7 +44,7 @@ To print a string of text:
 ```{r}
 print("Hello, world")
 ```
-You can hit the gren "play" icon to execute the chunk of code. Try modifying the chunk so it prints: "Hello, Berkeley". (Note the [1] just means that it is the first element of the displayed object. You can ignore this.)
+You can hit the green "play" icon to execute the chunk of code. Try modifying the chunk so it prints: "Hello, Berkeley". (Note the [1] just means that it is the first element of the displayed object. You can ignore this.)
 
 To add 2 + 2:
 ```{r}
@@ -56,15 +67,36 @@ z <- 5
 print(z)
 ```
 
+!!!!!!!!!!!!!!!!!! insert the question they need to answer by Friday
+                   here.
+
+Go to bcourses and answer the question. say where it is on bCourses.
+> I was able to login to the Rstudio 175 cloud server and change my
+> password and run a chunk of R
+
+> I was able to login but am having problems and will attend office
+> hours to get help as well as consider going to the ...
+
+> I was not able to login to the Rstudio 175 cloud server and will
+> contact carlm@... and/or go to the R workshop on Friday at 2 (get
+> details) at
+
+> You must go to bCourses to answer this question and have your answer
+> recorded.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 # Using R to calculate exponential population growth rates
 
-
 ```{r}
-## comments within code chunks begin with hashtags and are ignored by R
+## comments (within code chunks) begin with hashtags. They are ignored by R.
 
 ## We start by inputting world population sizes by hand, assigning them to variables named "N.1900" and "N.2000" using the assignment operator: "<-"
-N.1900 <- 1650 # this is the estimated world populaiton in 1900 (in millions)
+
+N.1900 <- 1650 # estimated world population in 1900 (in millions)
 N.2000 <- 6127 # same for 2000
+
 ## we can display the value of the variable called N.1900 (hit the "play" button)
 print(N.2000)
 ```
@@ -98,6 +130,8 @@ print( R.1850.to.1900 )
 
 You should get $0.00536155$, about 0.5 percent. (Hint: If you're still getting 0.0131193, it means you haven't modified the code and have assigned the new variable R.1850.to.1900 with the answer for 1900 to 2000.)
 
+!!!!!!!!!!!!!!!!!  class demo ends about here.
+
 
 # The *complete* history of world population
 
@@ -108,11 +142,10 @@ First we're going to read in data from a file that we've placed on the course la
 dat
 ```
 
-
-Now that we've inspected this data set, we're going to extract the
-contents into our two vectors year.vec and N.vec. (You don't need to
-understand this. We'll be learning about why this works in later
-labs.)
+Look at the data set, which has the form of a table with two labeled
+columns "pop" and "year". we're going to extract the contents into our
+two vectors year.vec and N.vec. (You don't need to understand
+this. We'll be learning about why this works in later labs.)
 
 ```{r}
 million <- 1000000
@@ -148,11 +181,11 @@ Wow, it looks like even proportional rate of growth has increased.
 
 
 You can now guess-timate the exponential population growth rate by
-eyeing the "slope" of the log rate of
-population growth is equal to the calculated growth rate. For example,
-the 8000 year period from -8000 to 0 saw an increase of about 4 in
-log-population size. The slope is thus about 4/8000 = 0.0005. We can
-check this with our calculations below.
+eyeing the "slope" of the log rate of population growth is equal to
+the calculated growth rate. For example, the 8000 year period from
+-8000 to 0 saw an increase of about 4 in log-population size. The
+slope is thus about 4/8000 = 0.0005. We can check this with our
+calculations below.
 
 
 ## Calculating growth rates through history
