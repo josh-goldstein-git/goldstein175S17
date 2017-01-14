@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {2}Logging in to the Rstudio175 Cloud Server for the first time}{2}{section.2}
 \contentsline {section}{\numberline {3}Some things to notice about Rstudio}{3}{section.3}
 \contentsline {section}{\numberline {4}Working in Rstudio}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}Executing code chunks}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}Executing code chunks}{4}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Checking your work}{5}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Bcourses}{5}{subsection.4.3}
 \contentsline {section}{\numberline {5}Resources for learning R, R studio and R notebook}{5}{section.5}
