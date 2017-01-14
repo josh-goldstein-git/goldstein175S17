@@ -20,22 +20,27 @@
 
 \title{The Rstudio175 cloud server\\
 for Demog/Econ C175}
-
+\author{Carl Mason\footnote{Please email corrections and complaints to cmason@berkeley.edu}}
 \maketitle
+
 \tableofcontents
 
 \section{Introduction}
 
-The Rstudio175 cloud server is the computing infrastructure for all of the homework assignments in Demog/Econ 175. If you are not enrolled in this course, then you do not need to read this.  \textbf{If you are a concurrent enrollement student, keep reading but also please send email to cmason@berkeley.edu to request access to the could server}.
+The Rstudio175 cloud server is the computing infrastructure for all of the homework assignments in Demog/Econ 175. If you are not enrolled in this course, then you do not need to read this.  \textbf{If you are a concurrent enrollement student, keep reading but also please send email to cmason@berkeley.edu to request access to the cloud server}.
+
+\begin{minipage}[H]{1.0\linewidth}
 
 \begin{mdframed}[backgroundcolor=blue!20]        
-\textbf{There are two ways to use Rstudio}. We recommend using the \textbf{Rstudio175 Cloud Server} described below. However it is also possible to  to install the \textbf{Desktop} version of  Rstudio on your own machine and run program locally.
+\textbf{There are two ways to use Rstudio}. We recommend using the \textbf{Rstudio175 Cloud Server} described below. However it is also possible to  to install the \textbf{Desktop} version of  Rstudio on your own machine and run the program locally.
 
-The Rstudio175 Cloud Server, will be maintained and supported so as to optimize your experience in Demography/Economics C175 and minimize your need to be your own system administrator.  \textbf{There is no need to install Desktop Rstudio} unless you either like  being your own sys/admin ,or you plan to do your homework on a planet where there is no internet\footnote{Another good reason to install Desktop Rstudio is if you plan to use R for projects outside of Demog/Econ C175}. Be aware that you're pretty much on your own with the Desktop version.  
+The Rstudio175 Cloud Server, will be maintained and supported so as to optimize your experience in Demography/Economics C175 and minimize your need to be your own system administrator.  \textbf{There is no need to install Desktop Rstudio} unless you either like  being your own sys/admin, or you plan to do your homework on a planet where there is no internet\footnote{Another good reason to install Desktop Rstudio is if you plan to use R for projects outside of Demog/Econ C175}. Be aware that you're pretty much on your own with the Desktop version.  
 \end{mdframed}
+  
+\end{minipage}
 \section{Logging in to the Rstudio175 Cloud Server for the first time}
 
-Shortly after registering for C175, you should receive email with instructions on how to initialize your account by setting your password.  All you should need to do is click on the link included in the email, and provide a new password.  If you never received this email verify that you are registered, then send email to trouble@demog.berkeley.edu.  Note that you must initialize your account within two weeks of the start of the semester to avoid administrative hurdles.
+Shortly after registering for C175, you should receive email with instructions on how to initialize your account by setting your password.  All you should need to do is click on the link included in the email, and provide a new password.  If you never received this email verify that you are registered, then send email to cmason@berkeley.edu.  Note that you must initialize your account within two weeks of the start of the semester to avoid administrative hurdles.
 
 Once you have established a password for your Rstudio175 Cloud account, go to 
 \url{http:courses.demog.berkeley.edu/goldstein175}.  The top of the page looks like this:
@@ -57,7 +62,7 @@ Calnet.
 
 \section{Some things to notice about Rstudio}
 
-Once you have successfully given your Calnet ID and password, your browser window becomes a modern IDE\footnote{IDE stands for \emph{Integrated Development Environment} which means a computer program that helps you write computer programs.} IDEs are quite complicated programs used by professionals to make writing programs more efficient and less error prone.
+Once you have successfully given your Calnet ID and Rstduio175 password, your browser window becomes a modern IDE\footnote{IDE stands for \emph{Integrated Development Environment} which means a computer program that helps you write computer programs.} IDEs are quite complicated programs used by professionals to make writing programs more efficient and less error prone.
 
 You will use only a small fraction of the features of Rstudio -- but should you (wisely) go on to master R, you will come to be amazed at the cleverness of this thing. Unfortunately,  before amazement comes bewilderment at the number of features present.
 
@@ -68,30 +73,17 @@ Your initial Rstudio window should look something like this:
 \textbf{BEFORE touching anything} Please Notice the following:
 
 \begin{itemize}
-\item The left hand pane, labeled ``console''  is an R interpreter.  It functions just like  \url{http://tryr.codeschool.com/}. It provides a prompt \Rp{} at which you can type R commands and, unless assigned to a variable, it prints the result on a subsequent line.
+\item The left hand pane, labeled ``console''  is an R interpreter.  It functions just like the R interpreter at \url{http://tryr.codeschool.com/}: It provides a prompt \Rp{} at which you can type R commands which are then \emph{interpreted} by the R process.
 
-\begin{verbatim}
-
-> 1+1
-[1] 2
-> sqrt(152399025)
-[1] 12345
-> x<-1:999
-> y<-log(x)
-> plot(x,y)
-\end{verbatim}
-
-
-
- \textbf{YOU HAVE been to tryr.codeschool.com right?} If not go there right now and complete the first 5 chapters.  Go ahead,  I'll wait.  If you don't do codeschool, you're going to die\footnote{Unfortunately, we cannot promise you immortality if you do go to codeschool, but you will stand a much better chance of surviving this course}.  
+That last sentence will make a lot more sense after you complete the first 5 chapters of  \url{http://tryr.codeschool.com}.  It's not essential that you do codeschool until the beginning of the third week, but the sooner you do it the sooner you will begin to appreciate R.
 
 It is important to understand that the R console is there, but as we'll see, R notebooks offer a more convenient way to have our R code processed, so we won't interact much with the R console in this course.
 
-\item The lower right hand pane should hold the file viewer. If it does not look like the picture above, then make sure the ``Files'' tab is depressed.
+\item The lower right hand pane should hold the file viewer. If it does not look a lot like the picture above, then make sure the ``Files'' tab is depressed.
 
 \includegraphics[scale=.5]{RstudioFiles}
 
-The file viewer gives you access to your files.  You should have several files with names like 'lab\_0\_sandbox.Rmd' or 'lab\_4\_thebet.Rmd'.   These files are the R notebooks which your weekly homework assignments.  The files download automatically \textbf{if you directory does not already contain a file with the same name}.  This means that if, while working on one of your assignments, you decide to declare bankruptcy and start over, you can simply delete or rename the file (check the box and hit the delete or rename button) then log out and log back in and a fresh copy of the file will be there.
+The file viewer gives you access to your files.  For now, you should have just one or two files with names like 'lab\_1\_world.Rmd'. More will appear later without any effort on your part.   These files are the R notebooks which hold your weekly homework assignments.  The files download automatically \textbf{if you directory does not already contain a file with the same name}.  This means that if, while working on one of your assignments, you decide to declare bankruptcy and start over, you can simply delete or rename the file (check the box and hit the delete or rename button) then log out and log back in and a fresh copy of the file will be there.
 
 \item To work on a homework assignment, simply click on the blue hypertext file name
 \includegraphics[scale=.5]{RstudioHyplink} and behold:  the \emph{Console} pane will shrink to a little nothing at the bottom of the window and its former place will be filled with an ``R notebook''.
@@ -109,11 +101,11 @@ The purpose of the code is to learn. Once you have learned what you can from the
 
 \subsection{Executing code chunks}
 
-In the R notebook, code comes in ``chunks'' interspersed with regular text such as this.  The code chunks look like this:
+In the R notebook, code comes in ``chunks'' interspersed with regular text.  The code chunks look like this:
 
 \includegraphics[scale=.5]{RstudioChunk}
 
-They are set off from the text by a light gray background and have three buttons in their upper right corner.  The green triangle on the far right is the most useful, it executes the code \textbf{in the current block only}. You'll generally want to use this button after making changes to the code chunk.
+They are set off from the text by a light gray background and have three buttons in their upper right corner.  The green triangle on the far right is the most useful, it executes the code \textbf{in the current chunk only}. You'll generally want to use this button after making changes to the code chunk.
 
 \subsection{Checking your work}
 
