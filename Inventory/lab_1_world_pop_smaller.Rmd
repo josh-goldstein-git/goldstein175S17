@@ -5,7 +5,6 @@ output: html_notebook
 
 !!!!!!!!!!!!!!! Note this is not final and needs at least!!!
 !!!! (1) fixing bcourses question
-!!!! (2) modifying note of where ended demo
 
 
 # Overview
@@ -67,24 +66,28 @@ z <- 5
 print(z)
 ```
 
-!!!!!!!!!!!!!!!!!! insert the question they need to answer by Friday
-                   here.
+# Go to bCourses and answer the question by Thursday night.
 
-Go to bcourses and answer the question. say where it is on bCourses.
-> I was able to login to the Rstudio 175 cloud server and change my
-> password and run a chunk of R
+Question 0. Which of the following is true for you?
 
-> I was able to login but am having problems and will attend office
-> hours to get help as well as consider going to the ...
+A. I was able to login to the Rstudio 175 cloud server and change my
+password and run a chunk of R.
 
-> I was not able to login to the Rstudio 175 cloud server and will
-> contact carlm@... and/or go to the R workshop on Friday at 2 (get
-> details) at
+B. I was able to login but am having problems. I know that I can come
+to office hours and get help. I also know that I can get help this
+Friday, January 20 from 1-3 in the Demography Dept at 2232 Piedmont
+Ave. (across from the stadium).
 
-> You must go to bCourses to answer this question and have your answer
-> recorded.
+C. I was not able to login to the Rstudio 175 cloud server. I will
+come to get help on Friday (see B).
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+D. I was not able to login to the Rstudio 175 cloud server and I am
+one of very few people who can't come to the Friday help session and
+so I am emailing Dr. Mason at cmason@berkeley.edu
+
+Note: You really must go to bCourses [https://bcourses.berkeley.edu/courses/1279544/quizzes/] have your answer
+recorded.
+
 
 
 # Using R to calculate exponential population growth rates
@@ -130,7 +133,7 @@ print( R.1850.to.1900 )
 
 You should get $0.00536155$, about 0.5 percent. (Hint: If you're still getting 0.0131193, it means you haven't modified the code and have assigned the new variable R.1850.to.1900 with the answer for 1900 to 2000.)
 
-!!!!!!!!!!!!!!!!!  class demo ends about here.
+(Note: class demo ends about here -- probably.)
 
 
 # The *complete* history of world population
