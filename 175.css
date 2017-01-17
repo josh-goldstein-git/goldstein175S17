@@ -47,7 +47,7 @@ A.menu { color:white;#6633DD;
 /* urgent warning */
 .urgent {
     border:2; border-style: groove; padding:20;color:white;
-    background-color:#FF4B4B;max-width:500px;
+    background-color:#FF4B4B;max-width:585px;
 }
  /* Tooltip container */
 .tooltip {
