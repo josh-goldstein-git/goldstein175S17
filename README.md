@@ -18,3 +18,4 @@ Best to pull first and then do the following ... but if you edited the
 files without pulling, you can push and git will warn and interact with you.
 
 
+josh@quigley:~$ cd /admin/docroots/courses/goldstein175

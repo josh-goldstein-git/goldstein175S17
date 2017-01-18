@@ -59,9 +59,13 @@ z <- 5
 print(z)
 ```
 
-# Go to bCourses and answer the question by Thursday night.
+# Please answer the following question by Thursday night
 
-Question 0. Which of the following is true for you?
+Which of the following is true for you? (Please answer this on a
+[google forms] (https://goo.gl/forms/obiZDiKC3bBTCaX73) for us --
+we're doing it on google right now so as to give everyone access. The
+graded questions at the bottom of the lab will need to be answered on
+bCourses).
 
 A. I was able to login to the Rstudio 175 cloud server and change my
 password and run a chunk of R.
@@ -78,8 +82,6 @@ D. I was not able to login to the Rstudio 175 cloud server and I am
 one of very few people who can't come to the Friday help session. I
 am emailing Dr. Mason at cmason@berkeley.edu for help.
 
-Note: You really must go to bCourses [https://bcourses.berkeley.edu/courses/1279544/quizzes/] have your answer
-recorded.
 
 
 
