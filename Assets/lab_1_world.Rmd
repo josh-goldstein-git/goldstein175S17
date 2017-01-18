@@ -61,26 +61,26 @@ print(z)
 
 # Please answer the following question by Thursday night
 
-Which of the following is true for you? (Please answer this on a
-[google forms] (https://goo.gl/forms/obiZDiKC3bBTCaX73) for us --
-we're doing it on google right now so as to give everyone access. The
-graded questions at the bottom of the lab will need to be answered on
-bCourses).
+> Which of the following is true for you? (Please answer this on a
+> [google forms] (https://goo.gl/forms/obiZDiKC3bBTCaX73) for us --
+> we're doing it on google right now so as to give everyone access. The
+> graded questions at the bottom of the lab will need to be answered on
+> bCourses).
 
-A. I was able to login to the Rstudio 175 cloud server and change my
-password and run a chunk of R.
+> A. I was able to login to the Rstudio 175 cloud server and change my
+> password and run a chunk of R.
 
-B. I was able to login but am having problems. I know that I can come
-to office hours and get help. I also know that I can get help this
-Friday, January 20 from 1-3 in the Demography Dept at 2232 Piedmont
-Avenue (across from the stadium).
+> B. I was able to login but am having problems. I know that I can come
+> to office hours and get help. I also know that I can get help this
+> Friday, January 20 from 1-3 in the Demography Dept at 2232 Piedmont
+> Avenue (across from the stadium).
 
-C. I was not able to login to the Rstudio 175 cloud server. I will
-come to get help on Friday (see B).
+> C. I was not able to login to the Rstudio 175 cloud server. I will
+> come to get help on Friday (see B).
 
-D. I was not able to login to the Rstudio 175 cloud server and I am
-one of very few people who can't come to the Friday help session. I
-am emailing Dr. Mason at cmason@berkeley.edu for help.
+> D. I was not able to login to the Rstudio 175 cloud server and I am
+> one of very few people who can't come to the Friday help session. I
+> am emailing Dr. Mason at cmason@berkeley.edu for help.
 
 
 
