@@ -5,7 +5,7 @@ output: html_notebook
 
 ```{r}
 tot = 0
-source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_malthus.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/tmp2.R")
 source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
 ```
 
@@ -19,10 +19,12 @@ well before the demographic transition.
 
 
 Malthus visited Norway and Sweden and describes his travels in his 2nd
-edition of (An Essay on the Priciple of
-Population). [http://www.econlib.org/library/Malthus/malPlong7.html#II.II.2].Please skim these two chapters for a better understanding about
+edition. [http://www.econlib.org/library/Malthus/malPlong7.html#II.II.2]. You
+should read these two chapters for a better understanding about
 Malthus's thinking on how the environment and human custom interact to
-produce demographic outcomes.
+produce demographic outcomes. It would be interesting to compare
+Norway and Sweden, but the Human Mortality Database has only Sweden
+with data for the 18th century.
 
 
 In this lab, our goals are to:
@@ -31,39 +33,28 @@ In this lab, our goals are to:
 consistent with Malthusian theory and see if we can detect a weakening
 of Malthusian regime in the 19th and 20th centuries.
 
-2. To learn how to use custom functions like malthus.plot.fun() by
-   changing their arguments (without rewriting the functions themselves).
+2. To learn how to import data into R and how to use functions (by changing their arguments, not rewriting them).
 
-3. To use the non-graded interactive questions we have written for you
-   (e.g., Q.1.1, Q.1.2).
-
-
+# Note: Instructions
 
 # Part 0: Import the data
 
-
 ```{r}
-
-## Note: you need to run this code to do the lab. But understanding it
-## is optional.
-
-## Read in the data from a file on the web using next two lines
 url <- "http://courses.demog.berkeley.edu/goldstein175/Basket/SWE_pop_birth_death.txt"
 df <- read.table(url, header =T)
 
-## Display the first few rows of the object "df"
+
+## Note: if this doesn't work, check to see that you've saved this file in a folder marked lab1 and that your R working directory for your R session is set to "lab1".
 head(df)
 
-## Create a separate object for popualtion size, births, deaths, and year.
 ## Note: "read.table()" imports as a "data.frame", which stores each
 ## column of a data set as a separate element, which can be accessed
 ## with the dollar-sign, as below.
+
 N <- df$N                               # population size
 B <- df$B                               # births
 D <- df$D                               # deaths
 year <- rownames(df)
-## Note: N, B, D, and year are vectors. In the last lab we used ".vec" in the names of the vectors. Here we omit this to make our code more readable.
-
 ```
 
 # Part 1: Inspect and understand the data
@@ -184,7 +175,7 @@ B.  Quite different from the counts
 {{
 qnumber = 2.1
 correct.answer = "B"
-hint = "Compare this plot of rates with the earlier plot of counts"
+hint = ""
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
 explanation = "The trends in rates show long term declines, particularly after 1850. The trends in counts are confounded by the population increase."
 }}
@@ -198,7 +189,7 @@ B.  In the the most recent year
 C.  In 1773, the same year as the peak number of deaths
 
 {{
-qnumber = 2.2
+qnumber = 2.1
 correct.answer = "C"
 hint = "Look for the spike in your graph of rates?"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
@@ -216,27 +207,28 @@ C.  The borders of Sweden changed.
 {{
 qnumber = 2.3
 correct.answer = "B"
-hint = "There wasn't a war"
+hint = ""
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
-explanation = "The 1773 famine was a catastrophic event. An
-inspiration for Malthus's thinking?."
+explanation = "The 1773 famine was a catastrophic event, which may have even inspired Malthus's thinking."
 }}
 
 
 # Part 3: Detecting Malthusian dynamics
 
-In class, we gave a two-panel graphical explanation of the Malthusian
-model. In the upper panel, we showed  the
-relationship between wages and birth and death rates. In the lower
-panel, we showed the relationship between population size and
-wages. Together, these two panels create the feedback loop for a very
-low growth Malthusian economy and population.
+In class, we gave a graphical explanation of the Malthusian model with two
+components. In the upper panel, we show the relationship between wages
+and birth and death rates. In the lower panel, we show the
+relationship between population size and wages. Together, these two
+panels create the feedback loop for a very low growth Malthusian
+economy and population.
 
-Here, we will look at whether one part of the Malthusian world appears
-to hold: that births and deaths go in opposite directions in good and
-bad times. We don't have a measure of wages, so our inference is going
-to be indirect, looking at the relationship between births and deaths
-by year.
+In this last part of the lab, we will look at whether one part of the
+Malthusian world appears to hold: that births and deaths go in
+opposite directions in good and bad times.
+
+We don't have a measure of wages, so our inference is going to be
+indirect, looking at the relationship between births and deaths by
+year.
 
 Q3.1. What relationship between births and deaths would be consistent
 with a Malthusian economy
@@ -327,66 +319,33 @@ for the following time periods.
 
 # Part 4: Lab write up. Please limit each answer to 50 words or less.
 
-> Remember: You need to answer these questions on bCourses.
+Q4.1 Turn in your plot of the relationship between birth and death
+rates from 1801-1850. (Bonus: Use R to put your name at the
+coordinates x = 1840, y = .02)
 
-> 1. Turn in your plot of the relationship between birth and death
-> rates from 1801-1850.  Note: to save a
-> graph, right click on it with your mouse and "Save image as ..."
-> (Bonus: Use the text() function in R to put
-> your name at the coordinates x = 1840, y = .02).
+Q4.2 In which of the above periods does the Malthusian relationship
+first break down? What is your basis for judging? What happens to the trend in birth and death rates that makes the Malthusian relationship go away?
+[ < 50 words]
 
-> 2. In which of the periods you explored above does the Malthusian
- > relationship first break down? What is your basis for judging? What
- > happens to the trend in birth and death rates that makes the
- > Malthusian relationship go away?  [ < 50 words]
+Q4.3 What does Malthus say is the main determinant of birth rates in
+*Norway*? Would this suggest that births would fall in the same year as
+deaths would rise, or a year or two after? [ < 50 words]
 
-> 3 What does Malthus say is the main determinant of birth rates in
-> *Norway*? (For this you will need to do the reading of the Norway
-> chapter referenced in the introduction to this lab.)  Would this
-> suggest that births would fall in the *same* year as deaths would rise,
-> or a year or two after? [ < 50 words]
+Q4.4 For the full Malthusian model, we would want to see if population
+size affects birth and death rates. How could you explore this
+graphically with these data? Describe the plot you would want to
+make. What would you put on the x-axis, and what on the y-axis? What
+relationship would would support Malthusianism? [ < 50 words] (Note:
+you don't have to make this plot, just answer the above questions in
+words.)
 
-> 4 For the full Malthusian model, we would want to see if population
-> size influences birth and death rates. How could you explore this
-> graphically with these data? Describe the plot you would want to
-> make. What would you put on the x-axis, and what on the y-axis,
-> making sure to specify whether you mean rates and counts. What
-> relationship would would support Malthusianism? [ < 50 words] (Note:
-> you don't have to make this plot, just answer the above questions in
-> words.)
-
-> 5 One major innovation of the pre-modern period was the introduction
-> of crops like the potato to Europe from the New World. In this
-> problem, we will use the Malthus
-> (app)[http://shiny.demog.berkeley.edu/josh/new_malthus] to
-> investigate what effect Malthus would predict that this new staple
-> crop for a country like Ireland. We will model this direclty by
-> assuming that potatoes do not afffect fertility or mortality
-> directly, but rather that they raise the effective wage rate from 1
-> to 1.18 by making famers more efficient.
-
-> 5.A Describe in words what happens in the *short term* as a result
-> of the introduction of the potato. What happens to wages in the
-> short term? What happens to birth and death rates in the short term?
-> [< 50 words]
-
-> 5.B According to Malthus, should the population size of Ireland
-> return settle back to its inititial size long after the introduction
-> of the potato? Why or why not? [< 50 words]
-
-> 5.C In general, which parts of the model will change the wage level
-> in the long-term, influencing individual welfare? For each of the
-> following, indicate whether the long-term wage level will change and
-> explain in one sentence why or why not.
-> 5.C.i The level of the function b(w) of births in terms of wages
-> 5.C.ii The level of the function d(w) of deaths in terms of wages
-> 5.C.iii The starting population size N(0).
-> 5.C.iv The level of the function w(N) of wages in terms of population size.
+Q4.5 [last year's Malthus question with App]
 
 
-
-
-
+Possible exam question;
+Q4.4 If the Malthusian regime had prevailed prior to 1800, what would
+you expect the population of Sweden to have been 200 years earlier (in
+1600) and why? [ 1 sentence]
 
 
 
