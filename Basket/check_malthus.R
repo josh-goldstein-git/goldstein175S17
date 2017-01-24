@@ -10,7 +10,10 @@
 .correct.answer1.2 = "C"
 .hint1.2 = "0.01 is 1 percent"
 .instructions1.2 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation1.2 = "A growth rate of 0.5 percent has a doubling time of about 140 years."
+.explanation1.2 = "Yes. Incidentally, a growth rate of 0.5 percent has a
+.doubling time of about 140 years, which we can calculate from
+.$T_{doub}1.2 = log(2)/R$. So we should have seen roughly 2 doublings,
+.which checks with our graph of population history."
 }}
 {{
 .qnumber1.3 = 1.3
@@ -29,7 +32,7 @@
 {{
 .qnumber2.1 = 2.1
 .correct.answer2.1 = "B"
-.hint2.1 = ""
+.hint2.1 = "Compare this plot of rates with the earlier plot of counts"
 .instructions2.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation2.1 = "The trends in rates show long term declines, particularly after 1850. The trends in counts are confounded by the population increase."
 }}

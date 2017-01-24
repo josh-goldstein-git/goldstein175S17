@@ -1,5 +1,5 @@
 ---
-title: "Malthus in Sweden"
+title: "Econ/Demog C175 Lab 2: Malthus in Sweden"
 output: html_notebook
 ---
 
@@ -20,9 +20,13 @@ well before the demographic transition.
 
 Malthus visited Norway and Sweden and describes his travels in his 2nd
 edition of (An Essay on the Priciple of
-Population). [http://www.econlib.org/library/Malthus/malPlong7.html#II.II.2].Please skim these two chapters for a better understanding about
-Malthus's thinking on how the environment and human custom interact to
-produce demographic outcomes.
+Population). [http://www.econlib.org/library/Malthus/malPlong7.html#Bk.II.Ch.I]. Please
+read these two chapters (Book II, Chapter I, "On the Checks to
+Population in Norway" paragraphs II.I.1 through II.I.8; and Chapter
+II, "On the Checks to Population in Sweden" paragraphs II.II.1 through
+II.II.9) for a better understanding about Malthus's thinking on how
+the environment and human custom interact to produce demographic
+outcomes.
 
 
 In this lab, our goals are to:
@@ -35,7 +39,15 @@ of Malthusian regime in the 19th and 20th centuries.
    changing their arguments (without rewriting the functions themselves).
 
 3. To use the non-graded interactive questions we have written for you
-   (e.g., Q.1.1, Q.1.2).
+(e.g., Q.1.1, Q.1.2).
+
+Note: there are TWO types of questions in Lab 2. First, we have the
+non-graded interactive questions in the special code chunks (which we
+did not have in Lab 1). These you do in RStudio. The goal of these is
+to help your learning of the material, not to assess you. Second, as
+in Lab 1, we have questions at the end that will be graded. These you
+do in bCourses.
+
 
 
 
@@ -102,7 +114,7 @@ plot(year, N.millions, type = "l")
 Q1.2 What is the average (exponential) growth rate of Sweden from 1751
 to 2014.
 ```{r}
-log(N[year == "2014"]/N[year == "1751"]) / (2014 - 1751)
+( log(N[year == "2014"] - log(N[year == "1751"]) )/ (2014 - 1751)
 ```
 Which value is this closest to?
 
@@ -119,14 +131,16 @@ qnumber = 1.2
 correct.answer = "C"
 hint = "0.01 is 1 percent"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
-explanation = "A growth rate of 0.5 percent has a doubling time of about 140 years."
+explanation = "Yes. Incidentally, a growth rate of 0.5 percent has a
+doubling time of about 140 years, which we can calculate from
+$T_{doub} = log(2)/R$. So we should have seen roughly 2 doublings,
+which checks with our graph of population history."
 }}
 
 
 ```{r}
 # plot of Deaths by year, with type = "line"
 plot(x = year, y = D, type = "l")
-
 ```
 
 Q1.3. In what year did Sweden have the most deaths?
@@ -144,6 +158,14 @@ hint = "Try an earlier date"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
 explanation = "Amazingly even though the population was smaller, the rate of mortality was so high, that 1773 saw they highest number of deaths."
 }}
+
+
+Plot the births using code similar the code for deaths, which is given
+below. (Hint: You just need to replace the "y" variable.)
+```{r}
+# This is the code for deaths by year (modify it slightly).
+plot(x = year, y = D, type = "l")
+```
 
 Q1.4 When were births at their low?
 
@@ -277,9 +299,6 @@ malthus.plot.fun <- function(from.year, to.year)
 
 ## now let's plot the first 50 years
 malthus.plot.fun(from.year = 1751, to.year = 1800)
-## malthus.plot.fun(from.year = 1801, to.year = 1850)
-## malthus.plot.fun(from.year = 1851, to.year = 1900)
-## malthus.plot.fun(from.year = 1851, to.year = 1900)
 ```
 Q3.2 Which of the patterns in Q3.1 (A,B,C,or,D) does this match most closely?
 
@@ -307,22 +326,25 @@ instructions = "Replace the 'NA' with your answer (e.g., 'A' in quotes)"
 explanation = "Our data is consistent with Malthus's idea that in bad times birth rates fell and death rates rose, and that in good times death rates fell and birth rates rose."
 }}
 
-We see that when birth rates are low when death rates are high (e.g.,
+We see that birth rates are low when death rates are high (e.g.,
 in 1772 and 1773). Even if we ignore these unusual years,
 there is a generally negative relationship. Now plot the relationship
 for the following time periods.
 
 1801-1850
 ```{r}
-## put your code here
+## Modify the code we used for 1751 to 100 appropriately.
+malthus.plot.fun(from.year = 1751, to.year = 1800)
 ```
 1851-1900
 ```{r}
-## put your code here
+## Modify the code we used for 1751 to 100 appropriately.
+malthus.plot.fun(from.year = 1751, to.year = 1800)
 ```
 1901-2014
 ```{r}
-## put your code here
+## Modify the code we used for 1751 to 100 appropriately.
+malthus.plot.fun(from.year = 1751, to.year = 1800)
 ```
 
 # Part 4: Lab write up. Please limit each answer to 50 words or less.
@@ -332,19 +354,21 @@ for the following time periods.
 > 1. Turn in your plot of the relationship between birth and death
 > rates from 1801-1850.  Note: to save a
 > graph, right click on it with your mouse and "Save image as ..."
-> (Bonus: Use the text() function in R to put
-> your name at the coordinates x = 1840, y = .02).
+>
+
+> Completely optional: for those familiar with R, you can add your
+> name to the plot using the text() function in R. Try adding it at
+> the ncoordinates x = 1840, y = .02).
 
 > 2. In which of the periods you explored above does the Malthusian
- > relationship first break down? What is your basis for judging? What
- > happens to the trend in birth and death rates that makes the
- > Malthusian relationship go away?  [ < 50 words]
+> relationship first break down? What is your basis for judging? What
+> happens to the trend in birth and death rates that makes the
+> Malthusian relationship go away?  [ < 50 words]
 
 > 3 What does Malthus say is the main determinant of birth rates in
-> *Norway*? (For this you will need to do the reading of the Norway
-> chapter referenced in the introduction to this lab.)  Would this
-> suggest that births would fall in the *same* year as deaths would rise,
-> or a year or two after? [ < 50 words]
+> *Norway*? (Hint: see II.I.3 and subsequent paragraphs in the
+> reading).  Would this suggest that births would fall in the *same*
+> year as deaths would rise, or a year or two after? [ < 50 words]
 
 > 4 For the full Malthusian model, we would want to see if population
 > size influences birth and death rates. How could you explore this
@@ -376,12 +400,13 @@ for the following time periods.
 
 > 5.C In general, which parts of the model will change the wage level
 > in the long-term, influencing individual welfare? For each of the
-> following, indicate whether the long-term wage level will change and
+> following, indicate whether the long-term wage will be different
+> than its initial value and
 > explain in one sentence why or why not.
-> 5.C.i The level of the function b(w) of births in terms of wages
-> 5.C.ii The level of the function d(w) of deaths in terms of wages
-> 5.C.iii The starting population size N(0).
-> 5.C.iv The level of the function w(N) of wages in terms of population size.
+> 5.C.i An upward shift the b(w) function of births in terms of wages
+> 5.C.ii An upward shift the d(w) function  of deaths in terms of wages
+> 5.C.iii A larger initial population size N(0).
+> 5.C.iv An upward shift in the function w(N) of wages in terms of population size.
 
 
 

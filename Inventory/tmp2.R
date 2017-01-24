@@ -10,7 +10,10 @@
 .correct.answer1.2 = "C"
 .hint1.2 = "0.01 is 1 percent"
 .instructions1.2 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation1.2 = "A growth rate of 0.5 percent has a doubling time of about 140 years."
+.explanation1.2 = "Yes. Incidentally, a growth rate of 0.5 percent has a
+.doubling time of about 140 years, which we can calculate from
+.$T_{doub}1.2 = log(2)/R$. So we should have seen roughly 2 doublings,
+.which checks with our graph of population history."
 }}
 {{
 .qnumber1.3 = 1.3
