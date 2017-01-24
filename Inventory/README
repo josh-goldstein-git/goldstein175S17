@@ -1,0 +1,10 @@
+To make changes and to make them live
+
+cd ~
+git [pull?]
+
+mkae changes
+
+git push
+
+ssh to demog and git pull

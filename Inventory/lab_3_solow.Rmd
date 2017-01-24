@@ -1,0 +1,64 @@
+# read data
+
+```{r}
+path <- "http://wps.aw.com/aw_weil_econgrowth_3/230/58938/15088221.cw/"
+filename <- "WeilDataExerciseCSVformat.csv"
+url <- "http://wps.aw.com/wps/media/objects/14734/15088221/WeilDataExerciseCSVformat.csv"
+## url <- paste0(path, filename)
+df <- read.table(url, header = T, sep = ",")
+## let's drop Brunei, with percap GDP of 70k
+df <- df[df$Country != "Brunei",]
+```
+
+# scatter plot of capital per person (k) and gdp
+
+```{r}
+k <- kpw1975 <- df$kpw1975 ## capital per worker in 1975
+y <- gdp1975 <- df$rgdpch1975
+plot(k, y, type = "p")
+text(k, y, df$Country, pos = 3, col = "grey")
+points(k, y, type = "p")
+title(1975)
+
+## we can try 2005
+k <- kpw2009 <- df$kpw2009 ## capital per worker in 2009
+y <- gdp2005 <- df$rgdpch2005
+points(k, y, col = "blue")
+
+```
+# Let's see if we can explain the difference in gdp
+
+We start with population and then see how much controlling for the
+k reduces effect of popualtion.
+
+```{r}
+
+k <- kpw1975 <- df$kpw1975 ## capital per worker in 1975
+n <- df$gpop
+y <- gdp1975 <- df$rgdpch1975
+
+## k <- kpw2009 <- df$kpw2009 ## capital per worker in 2009
+## y <- gdp2005 <- df$rgdpch2005
+
+
+library(memisc)
+my.s <- !is.na(k)
+m0 <- lm(y ~ n, subset = my.s)
+m1 <- update(m0, . ~ . + k, subset = my.s)
+mtable(m0, m1, summary.stats = c("R-squared", "N"))
+
+plot(y ~ n, subset = my.s)
+text(n[my.s], y[my.s], df$Country[my.s], col = "grey")
+points(y ~ n, subset = my.s)
+
+plot(y ~ k, subset = my.s, log = "xy")
+text(k[my.s], y[my.s], df$Country[my.s], col = "grey")
+points(y ~ k, subset = my.s)
+
+
+plot(k ~ n, subset = my.s, log = "")
+text(n[my.s], k[my.s], df$Country[my.s], col = "grey")
+points(k ~ n, subset = my.s)
+
+
+```

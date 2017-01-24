@@ -11,16 +11,16 @@
 .hint1.2 = "0.01 is 1 percent"
 .instructions1.2 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation1.2 = "Yes. Incidentally, a growth rate of 0.5 percent has a
-.doubling time of about 140 years. (Doubling time is equal to log(2) /
-.R.) So we should have seen roughly 2 doublings, which checks with our
-.graph of population history."
+.doubling time of about 140 years, which we can calculate from
+.$T_{doub}1.2 = log(2)/R$. So we should have seen roughly 2 doublings,
+.which checks with our graph of population history."
 }}
 {{
 .qnumber1.3 = 1.3
 .correct.answer1.3 = "C"
 .hint1.3 = "Try an earlier date"
 .instructions1.3 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation1.3 = "Amazingly even though the population was smaller, the rate of mortality was so high, that 1773 saw the highest number of deaths."
+.explanation1.3 = "Amazingly even though the population was smaller, the rate of mortality was so high, that 1773 saw they highest number of deaths."
 }}
 {{
 .qnumber1.4 = 1.4
@@ -46,7 +46,7 @@
 {{
 .qnumber2.3 = 2.3
 .correct.answer2.3 = "B"
-.hint2.3 = "War is not the answer"
+.hint2.3 = "There wasn't a war"
 .instructions2.3 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation2.3 = "The 1773 famine was a catastrophic event. An
 .inspiration for Malthus's thinking?."

@@ -1,0 +1,12 @@
+# read data
+
+```{r}
+path <- "http://wps.aw.com/aw_weil_econgrowth_3/230/58938/15088221.cw/"
+filename <- "WeilDataExerciseCSVformat.csv"
+url <- "http://wps.aw.com/wps/media/objects/14734/15088221/WeilDataExerciseCSVformat.csv"
+## url <- paste0(path, filename)
+df <- read.table(url, header = T, sep = ",")
+```
+
+# scatter plot of capital per person (k) and gdp
+
