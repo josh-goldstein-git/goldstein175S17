@@ -36,5 +36,7 @@
 .the greater the capital share of the economy is! This is what Piketty
 .argues is likely to happen. As growth rates fall, capital per worker
 .will increase, and with it an increase in the capital share of the
-.economic output."
+.economic output. Note that Piketty's view on this is empirically
+.driven and runs counter to what many theorists, who believe more in
+.the Cobb-Douglas-ness of the world."
 }}

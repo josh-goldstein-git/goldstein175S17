@@ -112,7 +112,7 @@ plot(year, N.millions, type = "l")
 Q1.2 What is the average (exponential) growth rate of Sweden from 1751
 to 2014.
 ```{r}
-( log(N[year == "2014"] - log(N[year == "1751"]) )/ (2014 - 1751)
+( log(N[year == "2014"]) - log(N[year == "1751"]) )/ (2014 - 1751)
 ```
 Which value is this closest to?
 
@@ -327,13 +327,12 @@ malthus.plot.fun(from.year = 1751, to.year = 1800)
 > Remember: You need to answer these questions on bCourses.
 
 > 1. Turn in your plot of the relationship between birth and death
-> rates from 1801-1850.  Note: to save a
-> graph, right click on it with your mouse and "Save image as ..."
->
+> rates from 1801-1850.  (Note: to save a graph from your RStudio
+> notebook, right click on it with your mouse and "Save image as ...")
 
 > Completely optional: for those familiar with R, you can add your
-> name to the plot using the text() function in R. Try adding it at
-> the ncoordinates x = 1840, y = .02).
+> name to the plot using the text() function in R. Try adding it in
+> the lower right of the plot.
 
 > 2. In which of the periods you explored above does the Malthusian
 > relationship first break down? What is your basis for judging? What
@@ -383,8 +382,10 @@ malthus.plot.fun(from.year = 1751, to.year = 1800)
 > 5.C.iii A larger initial population size N(0).
 > 5.C.iv An upward shift in the function w(N) of wages in terms of population size.
 
+> 6. [non-graded] About how many hours did it take you to complete this lab?
 
 
+Congratulations! You have completed Lab 2.
 
 
 

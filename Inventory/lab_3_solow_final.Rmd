@@ -43,10 +43,15 @@ $$
 # 2. Analytical questions
 
 Note: In this lab, we are beginning with some analytic, pencil and
-paper problems. Please answer them on bCourses.
+paper problems. Please answer them on bCourses. You can even open up
+the bCourses page using an R-command.
 
-1. Let the production function be Cobb-Douglas, with $y(k) =
-k^(.4)$. Assume that the savings is 20 percent, population growth is 1
+```{r}
+browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
+```
+
+1. Let the production function be Cobb-Douglas, with $y(k)=k^{.4}$.
+Assume that the savings rate is 20 percent, population growth is 1
 percent, and depreciation is 4 percent.
 
 (Express your answer as a general formula in terms of the symbols "s",
@@ -54,7 +59,7 @@ percent, and depreciation is 4 percent.
 function.
 
 For example, for the steady-state level of capital per worker, we
-substitute the production function y = k^a into the steady-state
+substitute the production function $y(k) = k^a$ into the steady-state
 condition above to give
 $$
 s y(k) = s k^\alpha = (n+d) k
@@ -111,7 +116,12 @@ b) Describe in words what happens in the long-run. (If the long-run
 
 
 In this part of the lab we will use R to calculate the shares of
-income from capital and from labor from two production functions.
+income from capital and from labor using two different production
+functions. In a competitive market, the returns to capital and labor
+are equal to their marginal product. In our case, we working with per
+capita income, so the only variable is the amount of capital per
+worker, k.  The derivative (change) of the production with respect to
+k is the marginal product and the rate of return of capital.
 
 ## i. Cobb-Douglas
 
@@ -137,7 +147,7 @@ lines(k, mp.k.analytic, col = "red", lwd = 2)
 
 Q1.1 Is the marginal product on capital
 A. Constant with increases in capital
-B. Falling  with increases in capital
+B. Rising  with increases in capital
 C. Declining with increases in capital
 
 ```{r}
@@ -240,7 +250,12 @@ check(answer2.2)
 ```
 
 
-# Graded questions
+# Part 5: Lab write up.
+
+Make sure to use bCourses to submit your answers.
+```{r}
+browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
+```
 
 
 1. (see question 1 in the analytical section at the beginning of lab)
@@ -267,4 +282,4 @@ b) Assume, as per Piketty (and per our 2nd example of a production
    declines. Would our faster depreciation increase inequality or
    reduce it?
 
-Congratulations! You are finished with lab 3.
+Congratulations! You are finished with Lab 3.

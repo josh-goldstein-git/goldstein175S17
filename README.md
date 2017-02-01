@@ -10,8 +10,14 @@ cd Inventory
  quizify(initial.filename = "malthus_sweden_lab_initial.Rmd",
 final.filename = "malthus_sweden_lab_final.Rmd",
 answer.key.filename = "check_malthus.R")
-```
 
+
+ source("../Basket/quizify.R")
+ quizify(initial.filename = "lab_3_solow_initial.Rmd",
+final.filename = "lab_3_solow_final.Rmd",
+answer.key.filename = "check_solow.R")
+
+```
 To update and make labs live
 
 Best to pull first and then do the following ... but if you edited the
