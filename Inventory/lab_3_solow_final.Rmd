@@ -28,6 +28,9 @@ The order of this lab will be slightly different in that we will start
 with some mathematical derivations and then go on to do some computing
 afterwards.
 
+(In order to display the equations, you may need to click on them with
+the mouse.)
+
 # 1. Introduction
 
 In the Solow model, the capital per worker and output per worker are
@@ -54,11 +57,11 @@ For example, for the steady-state level of capital per worker, we
 substitute the production function y = k^a into the steady-state
 condition above to give
 $$
-s y(k) = s k^\alph = (n+d) k
+s y(k) = s k^\alpha = (n+d) k
 $$
 Re-arranging, then gives us a formula for k in the steady state:
 $$
-( s / (n + d) )^(1 / (1-\alpha) ) = k
+\left( s \over {n + d} \right)^{1 \over {1-\alpha} } = k
 $$
 
 You can then substitute the values given in the problem and provide
@@ -74,15 +77,11 @@ c) What is the steady-state level of consumption per worker?
    rate when every couple has 1.7 children), but that all other
    parameters stay the same.
 
-a) By what percent does the steady-state output per worker change?
+a) What is the new steady-state output per worker? Is it higher or
+lower than with faster population growth?
+[A numerical answer and 1 sentence response is fine.]
 
-b) How much higher would the savings rate need to be to keep the steady-state
-capital/labor ratio (and output) at the same levels as when population
-growth was 1%?
-
-c) How much lower would steady-state consumption be? (Express your
-answer in percentage terms, e.g., "consumption would decline by 50%"
-(not the real answer))
+b) What is the new steady-state of consumption per worker. Is it higher or lower than with faster population growth? [A numerical answer and 1 sentence response is fine.]
 
 
 # 3. Questions with the App
@@ -244,9 +243,9 @@ check(answer2.2)
 # Graded questions
 
 
-1. (see beginning of lab)
+1. (see question 1 in the analytical section at the beginning of lab)
 
-2. (see beginning of lab)
+2. (see question 2 in the analytical section at the beginning of lab)
 
 3. What level of population growth would maximize income per capita? (Hint:
    you don't need calculus for this problem. Try thinking about it
