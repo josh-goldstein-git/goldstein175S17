@@ -1,0 +1,239 @@
+# Overview
+
+In this lab we will work with the neo-classical growth model using a
+cross-section of OECD countries. Our goals are two fold:
+
+1. To derive some analytical properties of the model, assuming a
+Cobb-Douglas production function.
+
+2. To use these properties to assess how much of a difference
+   population growth and savings rates make in explaining the income
+   differences across countries.
+
+The order of this lab will be slightly different in that we will start
+with some mathematical derivations and then go on to analyze data
+afterwards.
+
+
+# Analytical results from the Solow model
+
+We found in class that the steady-state equlibrium of the Solow model
+is found when the amount of new capital equals that needed to maintain
+the capital-labor ratio. Capital is increased via savings, and
+decreases due to depreciation and the dilution effect of population
+growth (which reduces the stock of capital per person). Equilibrium
+values of per person output $y^*$ and per person capital k*$ satisfy
+$$
+'birth' of capital = 'death' of capital
+$$
+$$
+s y = (n + d) k
+$$
+
+If we know the form of the production function $y(k)$, then we can
+specify more precisely the steady state. We will assume that we have a
+Cobb-Douglas Production function for the economy of the form
+
+$$
+Y = K^\alpha L^(1-\alpha),
+$$
+
+where $Y$ is national output, $K$ is the capital stock, and $L$ is the
+size of the labor force. Here $\alpha$ is a parameters in the
+model telling us about the form of diminishing returns.
+
+We convert to per worker units, dividing both sides by $L$, which gives
+$$
+y = Y / L = K^\alpha / L^\alpha = (K/L)^\alpha = k^\alpha
+$$
+where $y$ is the per worker output, and $k$ is capital per worker.
+
+Now we can do a bit of algebra to obtain expressions for $y^*$ and $k^*$.
+
+
+Q.1 In the steady state, $k^*$ equals
+
+A. $(s / (n + d))^(1 / (1 -alpha))$
+
+B. $((n+d) / s))^(1 / (1 -alpha))$
+
+C. $(s / (n + d) )$
+
+D. $(s / (n + d))^(alpha / (1 -alpha))$
+
+
+Q.2 In the steady state, $y^*$ equals
+
+A. (k^*)^\alpha
+
+B. $(s / (n + d))^(alpha / (1 -alpha))$
+
+C. A and B are equivalent and both correct.
+
+
+## Analyzing the steady state
+
+We can get a sense of how changes in savings $s$ and population growth
+will effect total output $y$. Typically $\alpha$ takes a value like
+$1/3$, and so the exponent (\alpha / (1-\alpha)) is something close
+to 0.5.
+
+If we increase the savings rate, then we will increase the steady
+state of output. If we increase population growth or the rate of
+depreciation then we will make the denominator larger, giving a
+smaller value of output.
+
+Q.3 If s = .2, y.... hten ..
+
+what is y*
+
+
+Q.4 How much will income change if populaiton gorwth rates fall to ...
+
+
+Q.5 How much will income change if savings rates double?
+
+
+Q.6 What is the capital labor ratio in the steady state (with the
+initala values in Q3? What is the capital lbaor ratio if population
+growth rates fall as in Q4?
+
+
+## The Solow Model and the Real World
+
+Here we take a modern cross section of countries with approximately
+the same level of technology.
+
+
+```{r}
+
+path <- "http://wps.aw.com/aw_weil_econgrowth_3/230/58938/15088221.cw/"
+filename <- "WeilDataExerciseCSVformat.csv"
+url <- "http://wps.aw.com/wps/media/objects/14734/15088221/WeilDataExerciseCSVformat.csv"
+## url <- paste0(path, filename)
+df <- read.table(url, header = T, sep = ",", as.is = T)
+
+oecd <- c(## "Australia",
+    "Austria", "Belgium", "Canada", "Denmark",
+          "Finland", "France", "Germany", "Greece",
+          ## "Hungary",
+          "Iceland",
+      "Italy", "Japan", "Korea, Republic of",
+      "Netherlands", "Spain", "Sweden",
+      "Switzerland", "United States")
+
+df <- df[df$Country %in% oecd,]
+country <- as.character(df$Country)
+country[country == "Korea, Republic of"] <- "Korea"
+k <- df$kpw2009
+y <- df$rgdpwk2009
+s <- df$grodomsav09/100
+n <- df$gpop/100
+df <- df[,c("Country", "kpw2009", "rgdpwk2009", "grodomsav09", "gpop")]
+df$Country[df$Country == "Korea, Republic of"] <- "Korea"
+
+df2 <- data.frame(n,y,s,k)
+rownames(df2) <- country
+
+```
+
+## Let's look at general relationships
+```{r}
+# population growth rate and income
+plot(y ~ n, type = "n")
+text(n,y, country,
+     xlim = range(n)*1.2,
+     cex = .85)
+abline(lm(y ~ n))
+```
+
+Q... Is population growth associated with lower income?
+
+A. Yes, there is a weak association, especially if we ignore the
+United States.
+
+B. Yes, there is a strong association, with few exceptions.
+
+C. No, the relationship is in the other direction, with
+faster growing populations consistently having higher incomes
+
+Now we can see if the effect of population growth might be operating
+through capital.
+
+```{r}
+# capitalk and income
+plot(y ~ k, type = "n")
+text(k,y, country,
+     xlim = range(n)*1.2,
+     cex = .85)
+abline(lm(y ~ k))
+```
+
+Here we see that higher incomes are associated with more capital per
+worker.
+
+In fact, we can estimate the "elasticity" of income with respect to
+capital from this data. In our Cobb-Douglas formulation, we had
+$$
+y = k^\alpha
+$$
+or
+$$
+\log(y) = \alpha \log (k)
+$$
+So, the slope of this log-log plot will be $alpha$.
+
+
+```{r}
+plot(log(y) ~ log(k), type = "n")
+text(log(k),log(y), country,
+     xlim = range(n)*1.2,
+     cex = .85)
+abline(lm(log(y) ~ log(k)))
+```
+
+Q.X Eyeballing the units and the line in the graph,
+A. Alpha is about 1/4
+B. Alpha is about 4
+C. Alpha is about 1/2
+D. Alpha is about 1
+
+Hint: as log(k) increases from 12.0 to 12.3, how much does log(y)
+increase?
+
+The interpretation of elascicity alpha is that when we increase
+capital by say 10% it will increase output by alpha*10%. If alpha is
+1/3, then this means an increase of a bit more than 3%.
+
+Diminishing marginal returns comes from the fact that $alpha <
+1$. [Zhou Yi, is this right?]
+
+
+
+
+## Graded Questions
+
+1. All other things equal, the neo-classical growth model sees
+benefits from lower population growth. Explain in non-technical
+language what is behind this effect. [< 50 words]
+
+
+2. Did your analysis of the OECD countries in the lab support this
+conclusion? Discuss. [< 50 words]
+
+3. Were there any countries that didn't fit the general pattern?
+Discuss [< 50 words]
+
+
+4. In an economy with 1% population growth, but without any
+technological change, what will be:
+
+a) the growth rate of total output Y
+b) the growth rate of total capital K
+c) the growth rate of capital per worker k
+d) the growth rate of per worker output
+
+5. What needs to happen in order for the neo-classical growth model to
+be consistent with rising income per capita? (Hint: think about what
+kind of changes increase the steady state level of per person output.)
+

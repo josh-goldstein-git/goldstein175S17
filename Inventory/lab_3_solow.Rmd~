@@ -1,3 +1,61 @@
+# outline
+
+0. Comparative Statics (or dyanmics with App)
+
+a) What happens to per capita income if population growth rate falls from 1% to -0.5% (this is equilalent to a change in TFR from 3 to 1.5 ...)
+
+b) What happens if double savings rate from ... to ... (corresponding to the difference between US and Austria)
+[describe in a sentence. Give the approximate values from hte App, e.g., y goes from 2 to 5).]
+
+
+c) What population growth rate would maximize per capita income? (Explain in one sentence)
+A. As large as possible
+B. As small as possible
+C. A specific value that we cannot compute unless we know more parameter values.
+
+
+
+1. Analysis of C-D production function
+
+a) Show that the steady state of capital per worker is ...? Assume production function is Cobb-Douglas, with savings rate "s", depreciation "d", and population growth rate "n".
+
+We showed in class that.
+
+s ys = (n + d)  ks
+
+If $y = A k^alpha$, show using algebra that
+
+ks = A (s / (n+ d))^(1/(1-alpha))
+
+b) Show using algebra that
+
+ys = A (s / (n+d))^(alpha/(1-alpha))
+
+[should we include A? Yes in order to get realistic numbers that they can assess if they are right. But if so, you have to explain that with scale-free production fucntions, it makes no difference what A is to the qualityative features of the model. ]
+
+c) If n = .01 and d = .1, and alpha = 1/3, then what is ks, and what is ys?
+
+2. Using data for 2009, let's see how much of the variation between OECD countries can be explained with the Solow model.
+(Note: we are using a strong form of the model, with every country having the same "technology" A, and comparing economies in transition as if they were in their steady states.)
+
+a) Plot y and n
+
+b) Calculate k.hat
+
+c) Plot k and k.hat, discuss fit and and non-fit.
+
+d) Calculate y.hat, plot y and y.hat, discuss ...
+
+-----------------
+
+
+
+
+
+
+b) Show What is steady state of output per worker?
+
+
 # read data
 
 ```{r}
@@ -6,7 +64,173 @@ filename <- "WeilDataExerciseCSVformat.csv"
 url <- "http://wps.aw.com/wps/media/objects/14734/15088221/WeilDataExerciseCSVformat.csv"
 ## url <- paste0(path, filename)
 df <- read.table(url, header = T, sep = ",")
+## let's drop Brunei, with percap GDP of 70k
+df <- df[df$Country != "Brunei",]
+names(df)
+hist(df$grodomsav75)
+
 ```
+
+# A different approach (doing predicted per capita gdp)
+
+## 1. We estimate alpha in C-D produciton fucntion
+
+```{r}
+my.s <- df$Country %in% c("Brazil", "China", "France", "Germany", "Greece",
+                          "Japan", "Mexico", "Nigeria", "India", "Taiwan",
+                          "United States")
+my.s <- df$Country %in% c("France", "Germany", "Greece",
+                          "Japan", "United States", "Canada",
+                          "Italy", "Sweden")
+
+oecd <- c("Australia", "Austria", "Belgium", "Canada", "Denmark", "Finland",
+          "France", "Germany", "Greece", "Hungary", "Iceland", "Italy", "Japan", "Korea", "Neterhlands", "Spain", "Sweden", "Switzerland", "United States")
+my.s <- df$Country %in% oecd
+
+df$Country[my.s]
+```
+
+Q1. Which country has the highest savings rate
+A
+B
+C
+D
+
+
+
+# OECD vars
+```{r}
+dat <- df[my.s,] # oecd data
+
+k <- dat$kpw2009
+y <- dat$rgdpwk2009
+s <- dat$grodomsav09/100
+n <- dat$gpop/100
+```
+
+# Solow relationships
+
+```{r}
+
+#predicted y
+
+## assume alpha = 1/3 and depreciation = .1
+alpha = 1/3
+d = .1
+
+# let's get k.hat (assuming cobb-douglas)
+
+k.hat <- (s/(n+d))^(1/(1-alpha))
+
+## check question here
+
+
+A <- mean(k/k.hat)
+y.hat <- A* k.hat^alpha
+par(mfrow = c(1,1))
+plot(k.hat, k)
+text(k.hat, k, dat$Country)
+```
+```{r}
+# some plots
+# capital vs n
+plot(n, k)
+text(n,k, dat$Country)
+
+# capital vs s/n
+plot(s/(n+d), k)
+text(s/(n+d), k, dat$Country)
+```
+
+```{r}
+plot(y.hat, y)
+text(y.hat, y, dat$Country)
+m <- lm(y ~ y.hat,
+        subset = !(dat$Country %in% c("United States", "Greece")))
+abline(m, lty = 2)
+```
+
+
+
+
+
+## plot log(y) ~ log(k)
+
+y <- df$rgdpch1975[my.s]
+k <- df$kpw1975[my.s]
+labor.share <- df$laborshare[my.s]
+country.vec <- df$Country[my.s]
+ plot(k, y, log = "xy")
+ # , ylim = c(100, 25000), xlim = c(1000, 150000))
+
+text(k,y, country.vec)
+summary(lm(log(y) ~ log(k)))
+labor.share
+
+
+
+
+```
+
 
 # scatter plot of capital per person (k) and gdp
 
+```{r}
+k <- kpw1975 <- df$kpw1975 ## capital per worker in 1975
+y <- gdp1975 <- df$rgdpch1975
+plot(k, y, type = "p")
+text(k, y, df$Country, pos = 3, col = "grey")
+points(k, y, type = "p")
+title(1975)
+
+## we can try 2005
+k <- kpw2009 <- df$kpw2009 ## capital per worker in 2009
+y <- gdp2005 <- df$rgdpch2005
+points(k, y, col = "blue")
+
+```
+# Let's see if we can explain the difference in gdp
+
+We start with population and then see how much controlling for the
+k reduces effect of popualtion.
+
+```{r}
+
+k <- kpw1975 <- df$kpw1975 ## capital per worker in 1975
+n <- df$gpop
+y <- gdp1975 <- df$rgdpch1975
+
+## k <- kpw2009 <- df$kpw2009 ## capital per worker in 2009
+## y <- gdp2005 <- df$rgdpch2005
+
+
+library(memisc)
+my.s <- !is.na(k)
+m0 <- lm(y ~ n, subset = my.s)
+m1 <- update(m0, . ~ . + k, subset = my.s)
+mtable(m0, m1, summary.stats = c("R-squared", "N"))
+
+plot(y ~ n, subset = my.s)
+text(n[my.s], y[my.s], df$Country[my.s], col = "grey")
+points(y ~ n, subset = my.s)
+
+plot(y ~ k, subset = my.s, log = "xy")
+text(k[my.s], y[my.s], df$Country[my.s], col = "grey")
+points(y ~ k, subset = my.s)
+
+
+plot(k ~ n, subset = my.s, log = "")
+text(n[my.s], k[my.s], df$Country[my.s], col = "grey")
+points(k ~ n, subset = my.s)
+
+
+```
+
+# Repeat regressions using log y and log k
+
+```{r}
+l0 <- lm(log(y) ~ n, subset = my.s)
+l1 <- update(l0, . ~ . -n + log(k))
+l2 <- update(l1, . ~ . + n)
+mtable(l0,l1, l2)
+```

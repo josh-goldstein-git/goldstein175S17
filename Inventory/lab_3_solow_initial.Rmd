@@ -1,3 +1,14 @@
+---
+title: "Econ/Demog C175 Lab 2: Solow model analysis"
+output: html_notebook
+---
+
+```{r}
+tot = 0
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_solow.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
+```
+
 # Overview
 
 In this lab we will work with the neo-classical growth model developed
@@ -17,12 +28,7 @@ The order of this lab will be slightly different in that we will start
 with some mathematical derivations and then go on to do some computing
 afterwards.
 
-
-
 # 1. Introduction
-
-
-
 
 In the Solow model, the capital per worker and output per worker are
 in their steady state when investment exactly balances population
@@ -30,7 +36,6 @@ growth and depreciation. This is when
 $$
 s y(k) = (n+d) k.
 $$
-
 
 # 2. Analytical questions
 
@@ -80,7 +85,7 @@ answer in percentage terms, e.g., "consumption would decline by 50%"
 (not the real answer))
 
 
-# 2. Questions with the App
+# 3. Questions with the App
 
 For the following question, you may find it useful to experiment with
 the "Solow_2017" app available at
@@ -103,13 +108,13 @@ b) Describe in words what happens in the long-run. (If the long-run
    after the technology change, what is causing this additional
    increase?)
 
-# Growth and Inequality
+# 4. Growth and Inequality
 
 
 In this part of the lab we will use R to calculate the shares of
 income from capital and from labor from two production functions.
 
-1. Cobb-Douglas
+## i. Cobb-Douglas
 
 Here we use a production function of the form
 $$
@@ -185,8 +190,7 @@ keeping the capital share of income constant."
 }}
 
 
-2. An alternative production function
-
+## ii. An alternative production function
 
 Let's modify the Cobb-Douglas production function slightly so that it
 is
