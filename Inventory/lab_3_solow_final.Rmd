@@ -1,5 +1,5 @@
 ---
-title: "Econ/Demog C175 Lab 2: Solow model analysis"
+title: "Econ/Demog C175 Lab 3: Solow model analysis"
 output: html_notebook
 ---
 
