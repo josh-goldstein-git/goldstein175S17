@@ -17,7 +17,7 @@ by Solow and Swann. Our goals are:
 1. To derive some analytical properties of the model, assuming a
 Cobb-Douglas production function.
 
-2. To use understand the dynamics of income and savings using a
+2. To understand the dynamics of income and savings using a
 simulation app.
 
 3. To understand how the capital intensification may or may not lead
@@ -50,12 +50,12 @@ the bCourses page using an R-command.
 browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
 ```
 
-1. Let the production function be Cobb-Douglas, with $y(k)=k^{.4}$.
+1. Let the production function be Cobb-Douglas, with $y(k)=k^{0.4}$.
 Assume that the savings rate is 20 percent, population growth is 1
 percent, and depreciation is 4 percent.
 
 (Express your answer as a general formula in terms of the symbols "s",
-"k", "n", "d", and the exponent "\alpha" of the Cobb-Douglas production
+"k", "n", "d", and the exponent $\alpha$ of the Cobb-Douglas production
 function.
 
 For example, for the steady-state level of capital per worker, we
@@ -118,8 +118,8 @@ b) Describe in words what happens in the long-run. (If the long-run
 In this part of the lab we will use R to calculate the shares of
 income from capital and from labor using two different production
 functions. In a competitive market, the returns to capital and labor
-are equal to their marginal product. In our case, we working with per
-capita income, so the only variable is the amount of capital per
+are equal to their marginal product. In our case, we are working with
+per capita income, so the only variable is the amount of capital per
 worker, k.  The derivative (change) of the production with respect to
 k is the marginal product and the rate of return of capital.
 
@@ -198,8 +198,8 @@ y(k) = k^\alpha + k/10
 $$
 
 Modify the code below to work with this new production
-function. (Hint: the derivative with respect to k of k^alpha + k/10 is
-alpha * k^alpha + 1/10.)
+function. (Hint: the derivative with respect to k of $k^\alpha + k/10$ is
+$\alpha * k^{\alpha-1} + 1/10.$)
 
 
 ```{r}
@@ -229,6 +229,9 @@ check(answer2.1)
 Now let's see what happens to capital's share of total output.
 
 ```{r}
+## Note: here the variables carry over from the previous chunk. So, as
+## long as you have executed all of the chunks up to here, they will
+## be from the 2nd production function.
 mp.k <- mp.k.analytic
 output.from.capital.per.worker <- mp.k * k
 total.output.per.worker <- y.of.k
@@ -264,22 +267,24 @@ browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
 
 3. What level of population growth would maximize income per capita? (Hint:
    you don't need calculus for this problem. Try thinking about it
-   with a diagram.)
+   with a diagram.) [1 or 2 sentences is enough here.]
+
+## Robots and depreciation?
 
 4. Many are worried about the effects of robots on inequality. But
    perhaps robots will also depreciate more quickly than earlier forms
-   of productive capital.
+   of productive capital. (The next two questions are on this topic.)
 
-a) What would happen to capital per worker if we invested our savings
+   What would happen to capital per worker if we invested our savings
    in fast depreciating robots instead of slower depreciating
    traditional productive capital? (Please make the (unrealistic?)
    assumption that per dollar robots have the same effect on
-   production as traditional capital.)
+   production as traditional capital.) [< 50 words]
 
-b) Assume, as per Piketty (and per our 2nd example of a production
+5. Assume, as per Piketty (and per our 2nd example of a production
    function above), that the capital share of output increases with
    capital intensification and decreases when capital per worker
-   declines. Would our faster depreciation increase inequality or
-   reduce it?
+   declines. Would our hypothetical case of faster depreciation
+   increase inequality or reduce it? [< 50 words]
 
 Congratulations! You are finished with Lab 3.

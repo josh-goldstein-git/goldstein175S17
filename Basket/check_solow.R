@@ -6,8 +6,8 @@
 .respect to k."
 .instructions1.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation1.1 = "The marginal product on capital is equal to the slope of
-.the production function, which our plot shows is declining over
-.time."
+.the production function, which our plot shows is declining with
+.increases in capital."
 }}
 {{
 .qnumber1.2 = 1.2
