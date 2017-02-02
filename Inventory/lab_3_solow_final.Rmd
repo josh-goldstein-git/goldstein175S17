@@ -99,18 +99,18 @@ http://shiny.demog.berkeley.edu/josh/solow_2017/
 (You can also use the app to get a rough check your answers to the
 analytical questions above.)
 
-1. Assume a technological innovation, like the availability of
+3. Assume a technological innovation, like the availability of
    electricity, increases output per person at all levels of the
    capital/labor ratio from a previous level of 1.0 to a new level
    of 1.3.
 
 a) Describe in words what happens in the short run to output. (E.g.,
-   how large is the immediate increase in output?)
+   how large is the immediate increase in output?) [ 1 sentence ]
 
 b) Describe in words what happens in the long-run. (If the long-run
    steady state is higher than the short-term level of output right
    after the technology change, what is causing this additional
-   increase?)
+   increase?) [2 sentences]
 
 # 4. Growth and Inequality
 
@@ -265,23 +265,25 @@ browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
 
 2. (see question 2 in the analytical section at the beginning of lab)
 
-3. What level of population growth would maximize income per capita? (Hint:
+3. (see question 3 in the questions with the app section above)
+
+4. What level of population growth would maximize income per capita? (Hint:
    you don't need calculus for this problem. Try thinking about it
    with a diagram.) [1 or 2 sentences is enough here.]
 
 ## Robots and depreciation?
 
-4. Many are worried about the effects of robots on inequality. But
-   perhaps robots will also depreciate more quickly than earlier forms
-   of productive capital. (The next two questions are on this topic.)
+Many are worried about the effects of robots on inequality. But
+perhaps robots will also depreciate more quickly than earlier forms of
+productive capital. (The next two questions are on this topic.)
 
-   What would happen to capital per worker if we invested our savings
+5.   What would happen to capital per worker if we invested our savings
    in fast depreciating robots instead of slower depreciating
    traditional productive capital? (Please make the (unrealistic?)
    assumption that per dollar robots have the same effect on
    production as traditional capital.) [< 50 words]
 
-5. Assume, as per Piketty (and per our 2nd example of a production
+6. Assume, as per Piketty (and per our 2nd example of a production
    function above), that the capital share of output increases with
    capital intensification and decreases when capital per worker
    declines. Would our hypothetical case of faster depreciation
