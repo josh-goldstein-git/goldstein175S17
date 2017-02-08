@@ -13,9 +13,14 @@ In this lab we are going to take advantage of a database put together by David J
 We're going to ask the following:
 
 1. What has been the long-term trend in commodity prices?
+
 2. Was Simon lucky to have won the bet?
-3. Do the rises or absence of rises differ for commodities in a way that we can understand?
-4. Finally, we will use our Malthusian "harvest" model to learn about renewable resources.
+
+3. Do commodity price trends differ by commodity in a way that we can
+   understand?
+
+4. Finally, we will use our Malthusian "harvest" model to learn about
+   renewable resources.
 
 
 ```{r}
@@ -25,7 +30,7 @@ source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R"
 ```
 
 
-# 1. Read in data and graph trends in commodity prices
+# Part 1. Read in data and graph trends in commodity prices
 
 These commodity prices are indexed in two ways. First, the nominal
 prices have been adjusted for inflation. Second, all prices are
@@ -86,10 +91,13 @@ of the row and column. For example,
 ```{r}
 commod["1963", "Chromium"]
 ```
-tells us that the price of Chromium in 1963 was 55 percent of that
+tells us that the real price of Chromium in 1963 was 55 percent of that
 in 1900.
 
-# 2. Visualizing commodity prices
+> (Note: in the rest of the lab, unless we say "nominal price", we mean
+> "real price" when we use the word "price".)
+
+# Part 2. Visualizing commodity prices
 
 Let's see how the price of Chromium varies over time.
 
@@ -144,7 +152,7 @@ explanation = "Apparently, tin prices were controlled in part by a cartel of pro
 }}
 
 
-# 3. Replicating actual bet
+# Part 3. Replicating actual bet
 
 In the original bet, Ehrlich was allowed to choose any commodities he
 wished. He chose Chromium, Tin, Tungsten, and Nickel. In our data, we
@@ -153,10 +161,9 @@ three commodities we have.
 
 We will use a function to compare commodities over time. This uses the
 indexing by label we did above. It returns the change in value ending
-year of a
-$1000 purchase of the commodity basket in the start year. So a value
-of +100, would mean that the value of commodity basket increased by
-$100.
+year of a $1000 purchase of the commodity basket in the start year. So
+a value of +100, would mean that the value of commodity basket
+increased by $100.
 
 Q3.1 If the value of the basket increased by $100, who would win?
 
@@ -237,7 +244,7 @@ explanation = "A negative number means prices went down, and so Simon would have
 
 
 
-# 4. Does Simon win in other periods?
+# Part 4. Does Simon win in other periods?
 
 Commodities are highly volitile. Even if commodities were generally
 rising, Ehrlich could have been unlucky about the timing of his bet.
@@ -330,13 +337,20 @@ text(1960, -250, "Simon wins", col = "red")
 
 # 5. Generalizing the bet to other commodities
 
-A change in the supply of a particular commodity may or may not cause a price change -- depending on the availability of substitutes. You will use the results form Q4.1 and Q4.2 for the write-up of your graded questions below.
+A change in the supply of a particular commodity may or may not cause
+a large price change -- depending on the availability of
+substitutes. (Note: the results from this section will be useful for
+your write-up of the graded questions at the end of the lab.)
 
-Q5.1 Pick a commodity that you think has a lot of substitutes and see what fraction of the all of the 10 year bets from 1900 to 2005 Ehrlich would have won.
+Q5.1 Pick a commodity that you think has a lot of substitutes and see
+     what fraction of the all of the 10 year bets from 1900 to 2005
+     Ehrlich would have won.
 
-Q5.2 Repeat Q4.1 for a commodity that you think is difficult to substitute for.
+Q5.2 Repeat Q4.1 for a commodity that you think is difficult to
+     substitute for.
 
-The following code provides a template for a single commodity, in this case "Chromium".
+The following code provides a template for a single commodity, in this
+case "Chromium".
 
 ```{r}
 start.vec <- 1900:2005
@@ -355,24 +369,61 @@ cat("proportions:\n")
 prop.table(table(winner.vec))
 ```
 
+Well done. You are finished with the computing portion of Lab 4.
 
-# 5. Harvest app.
+# Part 5. Graded Questions
 
-check old homework, improve.
 
-# 6. Graded Questions
+Reminder: These questions should be answered at bCourses. (If the quiz
+"forms" are not available yet, write down your answers in another file
+to be cut-and-pasted later, when the forms become available.)
+```{r}
+browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
+```
 
-1.  Based on your analysis above, did commodity prices increased steadily with population growth over the course of the 20th century? [A few sentences, carefully worded, are fine here.]
 
-2. Was Simon "lucky"" or "right"? [Explain your answer in a 2 or 3 sentences.]
 
-3. Discuss the results of your analysis of an easily substitutable commodity.
-  i. Tell why you think that that commodity would be easily substituble, explaining what "service" it provides. (1 or 2 sentences)
-  ii. What did your analysis tell you about whether prices consistently increased? (1 - 2 sentences)
-  iii. Interpret your results (1 - 2 sentences)
+> 1. Based on your analysis above, did commodity prices increase
+>     steadily with population growth over the course of the 20th
+>    century? [A few sentences, carefully worded, are fine here.]
 
-4. Repeat question 3, but for the commodity you thought would be hard to substitute for.
+> 2. Was Simon simply "lucky" or "right", or both?
+>   [Explain your answer in a 2 or 3 sentences.]
 
-5. Did your results in 3 and 4 differ substantially from each other or from the results of Ehrlich and Simon's bet? (1 or 2 sentences is fine)
+> 3. Discuss the results of your analysis of an easily substitutable
+>   commodity.
 
-4. How might prices not reflect scarcity? [Give at least 3 reasons in a sentence or two each.]
+>   i. Tell why you think that this commodity would be easily
+>   substitutable, explaining what "service" it provides. [1 or 2
+>   sentences]
+
+>  ii. What did your analysis tell you about whether prices
+>  consistently increased? [1 or 2 sentences]
+
+>  iii. Interpret your results [1 or  2 sentences]
+
+> 4. Repeat question 3 (i,ii, and ii), but for the commodity you thought
+>   would be hard to substitute for.
+
+> 5. Did your results in 3 and 4 differ substantially from each other or
+>    from the results of Ehrlich and Simon's bet? [< 50 words]
+
+> 6. What are two reasons prices might not reflect the long-term
+>    availability of a commodity. [A sentence on each.]
+
+> 7. Renewable resources
+
+> i. Imagine a community living by a large lake full of fish. Each
+>    household in the community catches ten fish per day, which is the
+>    maximum sustainable yield. A technological innovation allows the
+>    households to increase their catch to twelve fish per day. Describe
+>    will happen to their yields in the short and longer term. [ < 50 words]
+
+> ii.	How does this relate to the idea of the tragedy of commons?
+> 	[A sentence or two is fine.]
+
+Congratulations! You are finished with Lab 4.
+
+
+
+
