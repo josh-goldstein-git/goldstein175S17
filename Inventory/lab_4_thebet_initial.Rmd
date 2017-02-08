@@ -128,9 +128,9 @@ A. Steadily rising
 
 B. Steadily falling
 
-C. Very volitile, with little clear long-term trend
+C. Very volatile, with little clear long-term trend
 
-D. Very volitile, with a clear upward trend
+D. Very volatile, with a clear upward trend
 
 {{
 qnumber = 2.1
@@ -249,10 +249,10 @@ with the four commodities we have.
 > See the Lam reading, p. 1242 for an account of the bet.
 
 We will use a function to compare commodities over time. This uses the
-indexing by label we did above. It returns the change in value ending
-year of a $1000 purchase of the commodity basket in the start year. So
-a value of +100, would mean that the value of commodity basket
-increased by $100.
+indexing by label we did above. It returns the change in value of a
+$1000 purchase of the commodity basket in the start year. So if the
+functions returns +100, this means mean that the value of the commodity
+basket increased by $100.
 
 Q3.1 If the value of the basket increased by $100, who would win?
 
@@ -503,7 +503,8 @@ browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
 > 6. What are two reasons prices might not reflect the long-term
 >    availability of a commodity. [A sentence on each.]
 
-> 7. Renewable resources
+> 7. Renewable resources (check on bCourses to see if this
+>	problem will be due as part of this lab or is being postponed.)
 
 > i. Imagine a community living by a large lake full of fish. Each
 >    household in the community catches ten fish per day, which is the
