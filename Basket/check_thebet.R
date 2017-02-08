@@ -22,10 +22,19 @@
 }}
 {{
 .qnumber2.2 = 2.2
-.correct.answer2.2 = "B"
-.hint2.2 = "All are reasonable, except C which is incorrect. Try again if you didn't answer B."
+.correct.answer2.2 = ""
+.hint2.2 = "There is no 'correct' answer. But of course a professor would lean
+.toward 'C'"
 .instructions2.2 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation2.2 = "Apparently, tin prices were controlled in part by a cartel of producers. See https://www.itri.co.uk/index.php?option=com_mtree&task=att_download&link_id=49605&cf_id=24 for a discussion from an industry research source."
+.explanation2.2 = "There is no 'correct' answer. But of course I would lean
+.toward 'C'"
+}}
+{{
+.qnumber2.3 = 2.3
+.correct.answer2.3 = "B"
+.hint2.3 = "All are reasonable, except C which is incorrect. Try again if you didn't answer B."
+.instructions2.3 = "Replace the NA with your answer (e.g., 'A' in quotes)"
+.explanation2.3 = "Apparently, tin prices were controlled in part by a cartel of producers. See https://www.itri.co.uk/index.php?option=com_mtree&task=att_download&link_id=49605&cf_id=24 for a discussion from an industry research source."
 }}
 {{
 .qnumber3.1 = 3.1
