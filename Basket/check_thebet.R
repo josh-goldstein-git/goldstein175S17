@@ -30,10 +30,10 @@
 {{
 .qnumber3.1 = 3.1
 .correct.answer3.1 = "B"
-.hint3.1 = "Prices went up"
+.hint3.1 = "Higher prices mean more scarcity."
 .instructions3.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation3.1 = "An increase in prices suggests an increase in
-.'scarcity' (according to Simon)."
+.'scarcity', what Ehrlich was betting on."
 }}
 {{
 .qnumber3.2 = 3.2
@@ -45,7 +45,7 @@
 {{
 .qnumber2.4 = 2.4
 .correct.answer2.4 = "B"
-.hint2.4 = "Insert there are 105 bets, not 100."
+.hint2.4 = "Insert there are 106 bets, not 100."
 .instructions2.4 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation2.4 = "62/1052.4 = 0.58."
+.explanation2.4 = "62/1062.4 = 0.58."
 }}
