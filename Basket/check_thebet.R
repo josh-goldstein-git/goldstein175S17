@@ -23,10 +23,12 @@
 {{
 .qnumber2.2 = 2.2
 .correct.answer2.2 = ""
-.hint2.2 = "There is no 'correct' answer. But of course a professor would lean
+.hint2.2 = "Ignore automatic message about your answer being 'incorrect.'
+.There is no 'correct' answer. But of course a professor would lean
 .toward 'C'"
 .instructions2.2 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation2.2 = "There is no 'correct' answer. But of course I would lean
+.explanation2.2 = "Ignore automatic message about your answer being 'incorrect.'
+.There is no 'correct' answer. But of course a professor would lean
 .toward 'C'"
 }}
 {{
