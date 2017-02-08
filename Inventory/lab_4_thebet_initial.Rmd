@@ -148,7 +148,7 @@ walk will have, by luck, some trend, but the underlying process
 generating the randomness has no trend -- on average the change is
 "zero". It is very easy to falsely interpret a random walk as having
 an underlying trend. The subject of how to make inferences about the
-trend of a time sereis is covered in an econometrics or statistics
+trend of a time series is covered in an econometrics or statistics
 class. For now, we will just look at some realizations of the random
 walk to get a feeling for what random realizations of trendless
 data can look like.
@@ -403,11 +403,11 @@ A. About 62 percent
 B. About 58 percent
 
 {{
-qnumber = 2.4
+qnumber = 4.1
 correct.answer = "B"
 hint = "Insert there are 106 bets, not 100."
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
-explanation = "62/106 = 0.58."
+explanation = "62/106 is about 0.58."
 }}
 
 
@@ -494,7 +494,7 @@ browseURL("https://bcourses.berkeley.edu/courses/1459366/quizzes")
 
 >  iii. Interpret your results [1 or  2 sentences]
 
-> 4. Repeat question 3 (i,ii, and ii), but for the commodity you thought
+> 4. Repeat question 3 (i,ii, and iii), but for the commodity you thought
 >   would be hard to substitute for.
 
 > 5. Did your results in 3 and 4 differ substantially from each other or

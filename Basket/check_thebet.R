@@ -54,9 +54,9 @@
 .explanation3.2 = "A negative number means prices went down, and so Simon would have won."
 }}
 {{
-.qnumber2.4 = 2.4
-.correct.answer2.4 = "B"
-.hint2.4 = "Insert there are 106 bets, not 100."
-.instructions2.4 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation2.4 = "62/1062.4 = 0.58."
+.qnumber4.1 = 4.1
+.correct.answer4.1 = "B"
+.hint4.1 = "Insert there are 106 bets, not 100."
+.instructions4.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
+.explanation4.1 = "62/106 is about 0.58."
 }}
