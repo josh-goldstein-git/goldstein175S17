@@ -18,7 +18,9 @@
 {{
 .qnumber1.3 = 1.3
 .correct.answer1.3 = "B"
-.hint1.3 = "Inspect the matrix of births"
+.hint1.3 = "Inspect the first row of the matrix of population
+.counts. Those age '0' are a good approximation of the number of
+.births, since infant mortality is very low in Japan"
 .instructions1.3 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation1.3 = "Fertility has been low so long in Japan that births are
 .exponentially declining at a fairly steady rate"
@@ -47,7 +49,7 @@
 .in lecture, we project a one sex population."
 .instructions2.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
 .explanation2.1 = "Yes, this is how many daughters a woman who experienced
-.100% survival"
+.100% survival would have"
 }}
 {{
 .qnumber3.1 = 3.1
@@ -83,11 +85,11 @@
 .production remain unchanged."
 }}
 {{
-.qnumber3.5 = 3.5
-.correct.answer3.5 = "C"
-.hint3.5 = "Match the concept in the column headers"
-.instructions3.5 = "Replace the NA with your answer (e.g., 'A' in quotes)"
-.explanation3.5 = "We come very close indeed, but probably use a slightly
+.qnumber4.1 = 4.1
+.correct.answer4.1 = "C"
+.hint4.1 = "Match the concept in the column headers"
+.instructions4.1 = "Replace the NA with your answer (e.g., 'A' in quotes)"
+.explanation4.1 = "We come very close indeed, but probably use a slightly
 .different mortality schedule. Something else to think about is why the
 .optimal TFR for the Fiscal Support Ratio is even higher."
 }}

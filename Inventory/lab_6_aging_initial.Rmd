@@ -11,7 +11,7 @@ continued population aging.
 
 Specifically, we will investigate:
 
-1. What has happened to the share of elderly and children over from
+1. What has happened to the share of elderly and children from
 World War II until today.
 
 2. What will happen if current levels of fertility and mortality
@@ -23,7 +23,8 @@ and
 the effect of fertility on consumption in the macro-economy.
 
 > Note 1: This lab is somewhat longer than previous labs. Please plan
-> accordingly.
+> accordingly. There is relatively little code for you to write but
+> there is a substantial amount of material that will be covered.
 
 > Note 2: Please be warned of the  varying notation for the
 > exponential growth rate of the stable population. Economists use "n"
@@ -63,7 +64,7 @@ After the War, fertility began to decline very rapidly.
 
 ```{r}
 
-tfr.data <- read.table("../Basket/japan_tfr.txt")
+tfr.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_tfr.txt")
 year.vec <- tfr.data$Year
 tfr.vec <- tfr.data$TFR
 plot(year.vec, tfr.vec, type = "o",
@@ -84,8 +85,8 @@ C. 1966 was an inauspicious year according to the Japanese zodiac, the
 year of the "fire horse" in which it was unlucky to have a daughter
 born.
 
-D. It was an inauspicious year and further evidence of intentionality
-is that births were slightly higher both before *and* after 1966.
+D. Everything in C *and*  further evidence of intentionality
+is that births were slightly higher both before and after 1966.
 
 {{
 qnumber = 1.1
@@ -103,7 +104,7 @@ We can see that the pace of mortality improvement was steady the
 entire time.
 
 ```{r}
-e0.data <- read.table("../Basket/japan_e0_female.txt")
+.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_e0_female.txt")
 year.vec <- e0.data$Year
 e0.vec <- e0.data$Female
 plot(year.vec, e0.vec, type = "o",
@@ -123,7 +124,7 @@ Q1.2 What is the pace of life expectancy improvement from 1980 to to
 
 A. About 1 year per year.
 
-B. About 3 years per decade
+B. About 2-3 years per decade
 
 C. About 1 month per year
 
@@ -141,9 +142,14 @@ Now we are ready to explore the history of Japan's age-structure.
 
 ```{r}
 ## read in matrix of population counts
-tmp <- read.table(file = "../Basket/japan_pop_matrix_1947_2015.txt")
+tmp <- read.table(file = "http://courses.demog.berkeley.edu/goldstein175/Basket/japan_pop_matrix_1947_2015.txt")
 colnames(tmp) <- gsub("X", "", colnames(tmp))
 Nxt.mat <- as.matrix(tmp)
+# ages 0-110 are rows of the matrix, years 1947-2015 are on the columns
+dim(Nxt.mat)
+# births for each year are given in the row labeled "0"
+print(Nxt.mat["0",]) # or equivalently 'print(Nxt.mat[1,])'
+
 ```
 Q1.3 What is happening to the number of births from 2014 to 2015?
 
@@ -155,7 +161,9 @@ B. They are declining at a rate of 1 or 2 percent a year
 {{
 qnumber = 1.3
 correct.answer = "B"
-hint = "Inspect the matrix of births"
+hint = "Inspect the first row of the matrix of population
+counts. Those age '0' are a good approximation of the number of
+births, since infant mortality is very low in Japan"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
 explanation = "Fertility has been low so long in Japan that births are
 exponentially declining at a fairly steady rate"
@@ -171,7 +179,8 @@ year.vec <- colnames(Nxt.mat)
 for (i in 1:length(year.vec))
 {
     barplot(Nxt.mat[,i], horiz = T,
-            xlim = c(0, 2.5 * 10^6))
+            xlim = c(0, 2.5 * 10^6),
+            xlab = "Number of people N(x,t)", ylab = "Age x")
     title(year.vec[i])
 ##     Sys.sleep(1/10)
 }
@@ -196,7 +205,7 @@ for (i in 1:length(my.year.vec))
 
 
 If we look at the effects of fertility decline on the population
-age-structure, we can see a very young population in the 1940s,
+age-structure, we can see a very young population in the 1950s,
 followed by a dramatic drop in the fraction of the young in the 1970s
 and 1980s. Since the 1980s, the smaller birth cohorts have entered the
 workforce, and the ratio of the elderly to workers has risen sharply.
@@ -276,8 +285,8 @@ Now we can see that the youth dependency ratio has fallen more than
 the old-age dependency ratio has risen. Total dependency has not yet
 reached it's post-war highs.
 
-Q1.5 Why does the youth dependency ratio fall sooner than the old-age
-dependency ratio?
+Q1.5 Why did the youth dependency ratio fall sooner than the old-age
+dependency ratio rises?
 
 A. Because when births fall, there is a lag of a few decades between
 fewer babies and fewer workers.
@@ -299,7 +308,8 @@ explanation = "This lull in dependency is called the 'Demographic Dividend'"
 
 # Part 2. Japan's Future?
 
-We now project Japan's population to see how the history of low
+We now project Japan's population (using the 1-sex projection model we
+covered in lecture) to see how the history of low
 fertility will play out over time. We assume here that fertility will
 remain at current levels. This will tend to produce quite a bit of
 population aging, more so that would occur if, as many expect,
@@ -314,10 +324,12 @@ rates found in the Human Fertility and Human Mortality Databases.
 
 ```{r}
 ## you can skip the details on how this is read in
-tmp <- read.table("../Basket/japan_projection_matrix_2014.txt")
+tmp <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_projection_matrix_2014.txt")
 colnames(tmp) <- gsub("X", "", colnames(tmp))
 A.2014 <- as.matrix(tmp)
 ## but do let's look at the first row
+print("Fertility rates: row 1 of the projection matrix")
+print("(look for non-zero values at ages where women tend give birth")
 print(round(A.2014[1,],3))                       # [1,] indexes first row
 ```
 
@@ -363,7 +375,7 @@ conditioning on 100% survival of the women. As we mentioned
 in lecture, we project a one sex population."
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
 explanation = "Yes, this is how many daughters a woman who experienced
-100% survival"
+100% survival would have"
 }}
 
 
@@ -470,7 +482,7 @@ than a 70 year old?
 Survey data enables age-specific estimates of consumption and
 production by age. The methodology for creating these estimates is
 somewhat complex, but the findings are quite robust. Here we take
-advantage of the schedules that were used by Ron Lee et al. () in
+advantage of the schedules that were used by Ron Lee et al. (http://science.sciencemag.org/content/sci/suppl/2014/10/08/346.6206.229.DC1/Lee.SM.pdf) in
 order to examine at a finer scale the effects of age structure on the
 economy.
 
@@ -478,8 +490,7 @@ Let's look at the estimates of production and consumption by single years
 of age in Japan.
 
 ```{r}
-
-df <- read.table("../Basket/japan_nta_schedules.txt")
+df <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_nta_schedules.txt")
 x <- 0:110
 cx <- df$cx                             # consumption by age
 yx <- df$yx                             # production by age
@@ -614,7 +625,7 @@ production remain unchanged."
 }}
 
 
-# Part 3. Optimimum fertility (using stable populations)
+# Part 4. Optimimum fertility (using stable populations)
 
 In this final section of the lab, we try to reproduce some of the
 results on optimal fertility in the Lee et al. reading.
@@ -702,7 +713,7 @@ print(opt.tfr)
 We see here that the "optimal" fertility rate is greater than 2.
 
 
-Q3.5 This value corresponds to which value of table 2 on page 232 of in Lee et al.
+Q4.1 This value corresponds to which value of table 2 on page 232 of in Lee et al.
 
 A. 1.34
 
@@ -715,7 +726,7 @@ D. 1.88
 E. 1.57
 
 {{
-qnumber = 3.5
+qnumber = 4.1
 correct.answer = "C"
 hint = "Match the concept in the column headers"
 instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
@@ -731,7 +742,7 @@ when comparing across stable populations, the increase in the old from
 slower pouplation growth is largely offset by decrease in the young.
 
 
-# Part 4. Another Capital Idea
+# Part 5. Another Capital Idea
 
 To finish up, let's combine the fertility on  population age
 structure, with the effects of fertility on the population growth rate
