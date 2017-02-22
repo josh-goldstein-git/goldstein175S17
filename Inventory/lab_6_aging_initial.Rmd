@@ -24,7 +24,7 @@ the effect of fertility on consumption in the macro-economy.
 
 > Note 1: This lab is somewhat longer than previous labs. Please plan
 > accordingly. There is relatively little code for you to write but
-> there is a substantial amount of material that will be covered.
+> there is a substantial amount of material to cover.
 
 > Note 2: Please be warned of the  varying notation for the
 > exponential growth rate of the stable population. Economists use "n"
@@ -44,8 +44,8 @@ source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_aging.R")
 source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
 ```
 
-> Note: the most helpful readings for this lab is Lee (200x) and Lee
-> et al (20xx).
+> Note: the most helpful readings for this lab is Lee (2003) for Parts
+> 1 and 2 and Lee et al (2014) for parts 3, 4, and 5.
 
 
 # Part 1. Population change over the demographic transition.
@@ -104,7 +104,7 @@ We can see that the pace of mortality improvement was steady the
 entire time.
 
 ```{r}
-.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_e0_female.txt")
+e0.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_e0_female.txt")
 year.vec <- e0.data$Year
 e0.vec <- e0.data$Female
 plot(year.vec, e0.vec, type = "o",
@@ -191,7 +191,7 @@ Or we can compare a few snapshots every 20 years.
 
 ```{r}
 my.year.vec <- c("1950", "1970", "1990", "2010")
-
+par(mfrow = c(1,4)) # this tells graphics window to display 1 row of 4 panels
 for (i in 1:length(my.year.vec))
 {
     print(i)
@@ -329,28 +329,34 @@ colnames(tmp) <- gsub("X", "", colnames(tmp))
 A.2014 <- as.matrix(tmp)
 ## but do let's look at the first row
 print("Fertility rates: row 1 of the projection matrix")
-print("(look for non-zero values at ages where women tend give birth")
+print("(look for non-zero values at ages where women tend give birth)")
 print(round(A.2014[1,],3))                       # [1,] indexes first row
 ```
 
 And let's print some elements showing survivors
 ```{r}
-print(A.2014[1:6, 1:6]) # the upper left corner
-print(A.2014[90:96, 90:96]) # towards the lower left corner
+print(A.2014[1:6, 1:6]) # the upper, left corner
+print(A.2014[90:96, 90:96]) # towards the lower, right corner
 ```
 
 To see the whole matrix is a bit difficult since it is so large. You
-can scroll. But you can also do a 3-d picture
+can scroll. But you can also do a 3-d picture.
 
 ```{r}
 persp(x = 0:110,
       y = 0:110,
       z = t(A.2014),                    # transpose for cleaner view
-      phi = 40,                         # viewing angle
+      phi = 35,                         # viewing angle
       xlab = "Age ('in')",
-      ylab = "Age",
+      ylab = "Age ('out')",
+      col = "pink",
+      expand = .2,
       zlab = "Transition rate")
 ```
+
+Here, the "fin" along the diagonal is survivorship and the very little
+ridge in front is the first row for reproduction.
+
 
 
 Q2.1 The sum of the first row elements should be closest to
@@ -411,8 +417,7 @@ persp(y = x,
 Now we project up to 2017.
 
 ```{r}
-## future.year.vec <- 2015:2017
-future.year.vec <- 2015:2100
+future.year.vec <- 2015:2017
 for (i in 1:length(future.year.vec))
 {
     ## The Nxt matrix is indexed by columns with years as characters
@@ -450,8 +455,8 @@ persp(y = x,
 For this section, you should create new r-code chunks.
 
 1. Project the population using the same "2014" projection matrix from
-2017 to 2100. (You can do this by copying the code above and making
-some small modifications.)
+   2017 to 2100. (You can do this by copying the code above and making
+   some small modifications.)
 
 2. Make a plot of the youth, old-age, and total dependency ratios from
    1947 to 2100. (You can do this by copying the code we used for
@@ -509,15 +514,20 @@ plot(x, cx,
 lines(x, yx, type = "l", col = "blue")
 ```
 
+Note: the decline to zero at age 90 and beyond is because there is
+missing data. (We discuss this the effect of this missing data in
+Question 5 at the end of the lab, but for now we will assume the true
+values are zero.)
+
 Q3.1 What are plausible units for the y-axis
 
 A. Annual dollars per person by  year of age
 
-B. Life time dollars per person up to that age
+B. Life-time dollars per person up to that age
 
 C. Annual yen per person by  year of age
 
-D. Life time yen per person up to that age
+D. Life-time yen per person up to that age
 
 {{
 qnumber = 3.1
@@ -736,7 +746,7 @@ optimal TFR for the Fiscal Support Ratio is even higher."
 }}
 
 The other thing to note is the Support Ratio with optimal fertility
-rate is not that much superior that obtained with plus or minus half a
+rate is not that much higher than that obtained with plus or minus half a
 child or so. The curve $SR(r)$ has a very flat peak. This is because
 when comparing across stable populations, the increase in the old from
 slower pouplation growth is largely offset by decrease in the young.
@@ -761,7 +771,7 @@ stock of capital per person, faster population growth rates need to be
 matched with larger fractions of income saved.
 
 In the steady state, we have savings per person equaling the new
-capital needed to keep up with pouplation growth $n$, depreciation
+capital needed to keep up with population growth $n$, depreciation
 $d$, and technological advances $\lambda$,
 $$
 s y = (n + d + \lambda) k
@@ -781,7 +791,7 @@ function only of $n$.
 d = .05
 lambda = .02
 ky.ratio = 3.0
-s.vec = (r.vec + d + \lambda) * k.over.y
+s.vec = (r.vec + d + lambda) * ky.ratio
 plot(r.vec, s.vec)
 ```
 
@@ -843,10 +853,10 @@ minimum?  [1 sentence is fine]
 > 3. We compared the effect of a very young age-structure in 1947 with
 >    the very old age structure in 2100 using the Total Dependency
 >    Ratio and the Support Ratio. The SR calculation suggested that
->    indeed the population in 2100 would be a greater economic burden,
->    whereas the TDR calculation did not. What feature of the
->    consumption profile do you think is responsible for this result?
->	[2 or 3 sentences is fine]
+>    indeed the aged population in 2100 would be a greater economic
+>    burden than the young pouplation in 1947. But the TDR calculation
+>    did not. What feature of the consumption profile do you think is
+>    responsible for this result?  [2 or 3 sentences is fine]
 
 > 4. If robotization were able to make the economy even more capital
 >    intensive, say increasing the capital-income ratio from 3.0
