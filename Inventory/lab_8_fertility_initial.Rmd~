@@ -1,0 +1,1327 @@
+---
+title: "Econ/Demog C175 Lab for Week 8: Micro-economic Models of
+Fertility and an Investigation of Historical Switzerland
+few children?"
+output: html_notebook
+---
+
+
+In this lab, we first go further into the cost-of-time model of
+fertility, answering questions based on theory and experimentation
+with the cost_of_time "app". Then, we look at fertility and
+socio-economic data from historical cross-section provinces in
+French-speaking Switzerland, trying to see how our models may or may
+not be consistent with historical experience.
+
+> Note: The first part of the lab includes some mathematical
+> derivations that we did not fully cover in class. You should
+> understand what analysis is done (and why), but you don't need to be
+> able to derive this yourself.
+
+# Part 0. Preliminaries
+
+We begin by downloading some data and functions to be used in the lab.
+
+
+```{r}
+tot = 0
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_fertility.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
+```
+
+
+
+The Cost_of_time app computes the optimal bundle (N, X) of N children
+and X-dollars worth of consumer goods. The app plots two choices, one
+based on the initial values of $(w, p, c, and I)$ and one for separate
+values $(w', p', c', and I').
+
+You can see the effect of changing any single value by changing any
+one of the "Parameters to perturb."
+
+You can see how these effect of these changes (e.g., increasing wages)
+depends on the values of the other parameters by first changing the
+initial parameter values, and then changing one of the "Parameters to
+perturb".
+
+
+
+
+# Background
+
+We imagine potential parents choosing between the number of children
+they want to have and the amount of "other goods" they want to
+consume.
+
+For simplicity, we let there just be one kind of "other goods", which
+we denote $X$. And we let the price be $1 per unit of $X$.
+
+The price of children has two components:
+
+1. A fixed dollar expenditure per child $p$ for food, clothing, shelter,
+schooling, toys, etc.
+
+2. A time cost of $c$ hours per child. This dollar value of the time
+cost depends on the parents wage.
+
+Parents face a budget constraint. Their household income consists of
+'outside income' $I$ and wage income $w L = w (T - c N)$.
+
+1. 'Outside income' $I$ includes sources like interest on assets,
+   inheritance, as well as the wage-earnings of someone who cannot
+   spend their time with children.
+
+2. Wage income is the hourly wage rate $w$ times the number of hours
+   worked $L$. The number of hours worked is equal to the total time
+   available for work $T$, minus the hours spent taking care of
+   children. (In our simple model, there is no leisure.)
+
+If the division of labor is such that men never take care of children,
+and women divide their time between child-care and market work, then
+one can think of $I$ as "male earnings" and $w (T- c N)$ as "female
+earnings."
+
+The family's expenditures must satisfy the budget constraint
+$$
+\mbox{Income} = \mbox{Consumption}.
+$$
+In our model, this means
+$$
+I + w (T- c N) = X + p N.
+$$
+We can re-arrange as
+$$
+I + w T = X + (p + c w) N,
+$$
+where the left-hand side is now "Full Income" and the right hand side
+gives the consumption including the time-cost of children. The full
+cost per child is thus $p + c w$.
+
+
+The choice of how many children and how much "other goods" is made so
+as to make the parents as happy as possible. We can use the same
+Cobb-Douglas formulation that we used for production functinos earlier
+in the semester as a convenient model for utility. We let the utility
+of a particular choice of $X$ and $N$ be
+$$
+U(X,N) = X^a N^{1-a},
+$$
+where $0 < a < 1$.
+
+Parents will choose $X$ and $N$ to maximize $U$, subject to their
+budget constraint. There are many methods for solving this constrained
+optimization problem, including:
+
+* numerical search (trying all combinations of X and N that satisfy
+the budget constraint). This is what we did in class.
+
+* substitution. We rewrite our budget constraint so that we express
+  one variable in terms of another. Then we substitute this expression
+  into the utility function and maximize utility of this single
+  variable function. (we will do this below)
+
+* Lagrange multipliers. This is a general method for constrained
+  optimization. Good to know, but beyond the mathematics we're using
+  in this course.
+
+## solving by substitution
+
+The purpose of showing the derivation is to give you a sense of how
+this is done. You don't need to be able to do this yourselves.
+
+1. Express $X$ in terms of $N$.
+
+From the budget constraint,
+$$
+I + w T = X + (p + c w) N,
+$$
+we can write
+$$
+X = (I + w T) - (p + cw) N
+$$
+
+2. Substitute into $U$
+
+$$
+U(X,N) = X^a N^{1-a},
+$$
+$$
+U(X,N) = U(N) =  \left[ (I + wT) - (p + cw) N \right]^a N^{1-a}
+$$
+
+At the maximum, $U'(N) = 0$. But it is a bit easier to work with
+$\log U$, which will reach a maximimum at the same value of $N$.
+
+$$
+\log U(N) = a\log{ \left[(I + wT) - (p + cw) N \right]} + (1-a)\log N
+$$
+
+$$
+{d\log U(N) \over d N} = {-a (p + cw) \over
+\left[(I + wT) - (p + cw) N \right]} + {(1-a) / N}
+$$
+
+When ${d\log U(N) \over d N} = 0$,
+$$
+{(1-a) / N} = {a (p + cw) \over
+\left[(I + wT) - (p + cw) N \right]}
+$$
+
+Solving for $N$ gives us
+$$
+N^* = (1 - a) {I + w T \over p + cw}.
+$$
+
+We obtain $X^*$, by substituting $N^*$ into our earlier expression.
+$$
+X^* = (I + w T) - (p + cw) N^* = (I + w T) - (1-a)(I + w T) = a (I + w T).
+$$
+(Because of the properties of the Cobb-Douglas utility function, the
+amount of $X$ chosen depends only on full income and is independent of
+the price of children.)
+
+## Analysis of the solution
+
+With our solution
+$$
+N^* = (1 - a) {I + w T \over p + cw}
+$$
+in hand, we can now ask what effect changes in any of the parameters
+will have on the choice of $N$.
+
+For example, increasing $a$ will clearly reduce $N^*$. We can write
+$$
+\partial N \over \partial a < 0
+$$
+
+Likewise, we can see that
+$$
+\partial N \over \partial I > 0
+$$
+
+And since $p$ and $c$ are both in the denominator,
+$$
+\partial N \over \partial c < 0
+$$
+and
+$$
+\partial N \over \partial p < 0
+$$.
+
+The only effect that is ambiguous in sign is
+$$
+\partial N \over \partial w \lessgtr 0
+$$.
+
+Some additional mathematical manipulation shows that
+
+$$
+\partial N \over \partial w <  0, \mbox{ when } {T\over c} < {I \over p}.
+$$.
+
+So, while in class, we questions the usefulness of the cost-of-time
+model in making predictions about the effect of a wage increase on
+fertility, we see here that the model makes clear predictions about
+the other variables. Increases in outside income $I$ unambigously
+increase fertility. Increases in the price of children through $c$ or
+$p$ unambigously reduce fertility. And changes in taste, by changing
+the relative preferences $a$ for children vs. goods, are also
+unambiguous in their effect.
+
+For the purposes of this class, you do not need to be able to follow
+every step in the mathematical derivation. What is important to
+understand is that it is possible to analyze this model and discover
+in a quite general way what predictions the model makes and what the
+limits of the model are. The tractability of the model is what makes
+it so useful for enhancing our understanding.
+
+
+I. Questions on perturbation of initial parameters
+
+For the following questions, we will leave the initial values of $w$, $p$,
+$c$, and $I$ unchanged. (Tip: you can always refresh your browser to return
+the app to its starting state.)
+
+
+1. Effect of a wage increase, changing $w'$ from $15 to $30:
+
+If we increase the hourly wage $w'$ from $15 to $30, what happens to
+fertility? [1 sentence with actual values.]
+
+What happens to utility? [1 sentence with actual values.]
+
+What happens to consumption of goods? [1 sentence with actual values.]
+
+2. If we increase outside income $I'$ from 1000 per week to $1,500 a week,
+what happens to fertility? [1 sentence with actual values.]
+
+3. If we reduce fixed costs $p'$ from $100 per week to $50 per week, what
+   happens to fertility? [1 sentence with actual values.]
+
+4. If we increase the time costs per child $c'$ from 10 to 15 hours per
+   week, what happens to fertility [1 sentence with actual values.]
+
+5. For which of the above does the direction of the effect
+   depends on initial parameter values, and for which do you think the
+   direction of the effect is unambiguous? (Hint: you can verify the
+   analytical answers given in the previous section by
+   experimentation.) [A sentence for each parameter.]
+
+6. Now change the initial parameter value of $c$ from 10 hours per
+   child to 2 hours per child before increasing wages from $15 per
+   hour to $30 per hour.
+
+   What is the effect of a wage increase on fertility now?
+   [1 sentence with actual values.]
+
+   Describe the relative size of the income and substitution effects
+   that must be true for this effect to hold. [1 sentence saying which
+   effect must dominate, no numbers needed.]
+
+7. Review of concepts. For each of the following scenarios, specify
+   how you could operationalize the scenario by changing a parameter,
+   and what effect the change in the parameter would be expected to
+   have on fertility. (For example, if the scenario was a cut in the
+   inheritance tax, you could say that on average this would increase
+   non-wage income I, and that the effect of increasing I would be
+   unambigously to increase fertility.)
+
+A. The government reduces the costs of elementary schooling (e.g. by
+   getting rid of school fees). What parameter would you change, and
+   what effect would this have on fertility?
+
+
+B. Male income falls, but we live in a society in which only women
+   take care of children. What parameter would you change, and what
+   effect would this have on fertility?
+
+
+C. Men becoming more involved in child care. One way of
+   operationalizing is to increase $T$, the time that could be spent
+   working or taking care of children. What other parameter would one
+   want to change? How could these changes be made in a way that had
+   no effect on fertility?
+
+D. Infant mortality falls. If we conceptualize the costs per child as
+   costs per surviving child, then this effectively lows the costs of
+   children. What parameters would you change, and what effect would
+   these changes have on fertility?
+
+
+# Overview
+
+In this homework, we take advantage of the wonderful coincidence that
+R has a built in data set from the literature on the historical
+demographic transition. The dataset has fertility, mortality, and a
+number of economic and social indicators for 47 French-speaking
+provinces of Switzerland in the years around 1888.
+
+The goal of this homework is to see empirically what the determinants
+of lower fertility appear to be -- and to see which of our economic
+theories seem to be applicable in this case.
+
+
+# 1. Understanding the variables
+
+a) Read results of help(swiss) and answer the following T/F questions
+```{r}
+help(swiss)
+```
+
+i) Agriculture is the percentage of land area  dedicated to farming.
+F
+
+ii) Education and examination are measured only for males
+T
+
+iii) No measure of income is available
+T
+
+iv) "Catholic" is the fraction, not percentage, of people who are
+Catholic.
+T
+
+
+b) What percent of children die before the age of 1 in Moutier?
+```{r}
+swiss["Moutier","Infant.Mortality"]
+```
+
+c) What is the district with the highest examination scores?
+```{r}
+swiss[which.max(swiss$Examination),]
+```
+
+
+# 2. Theoretical Expectations
+
+Before going further on the analysis, write down what you expect the
+relationship between fertility and the other variables to be according
+to Becker's quantity-quality model.
+
+We provide a model answer for "a." to show the format to use for the
+other parts.
+
+a. Infant mortality
+
+(Answer: Higher infant mortality would effectively increase the price
+of child quality. This would encourage parents to instead invest in
+quantity, raising fertility. So I would expect higher fertility to be
+found in provinces with higher infant mortality.)
+
+
+b. Catholic
+(Hint: Assume that this raises the psychological cost of limiting fertility.)
+
+c. Education
+(Hint: Give a two-part answer: first, the effect on parents
+having more education; and second, the effect children having more
+education)
+
+d. Examination
+(Hint: Think of this as a measure of the result of more investments in
+the "quality" of children)
+
+e. Agriculture
+
+
+
+# 3. Analysis
+
+
+1. What is the observed relationship between mortality and fertility?
+
+
+Plot it, using fertility as the outcome on the Y-axis
+```{r}
+plot(Fertility ~ Infant.Mortality, data = swiss)
+abline(lm(Fertility ~ Infant.Mortality, data = swiss), lty = 2)
+```
+
+Q3.1 Higher infant mortality is associated with
+
+A. Higher fertility
+
+B. Lower fertility
+
+C. No clear pattern in fertility
+
+{{
+answer...
+}}
+
+2. What is the relationship between "Agriculture" and fertility?
+
+```{r}
+## Cut and paste and adapt the code above for Infant.Mortality above
+```
+
+Q3.2 Higher proportions working in agriculture are  associated with
+
+A. Higher fertility
+
+B. Lower fertility
+
+C. No clear pattern in fertility
+
+
+3. What is the relationship between "Examination" and fertility?
+
+```{r}
+## Cut and paste and adapt the code above for Infant.Mortality above
+```
+
+Q3.3 Higher examination scores are  associated with
+
+A. Higher fertility
+
+B. Lower fertility
+
+C. No clear pattern in fertility
+
+
+4. What is the relationship between "Education" and fertility?
+
+```{r}
+## Cut and paste and adapt the code above for Infant.Mortality above
+```
+
+Q3.4 Higher education is  associated with
+
+A. Higher fertility
+
+B. Lower fertility
+
+C. No clear pattern in fertility
+
+
+5. What is the relationship between "Catholic" and fertility?
+
+```{r}
+## Cut and paste and adapt the code above for Infant.Mortality above
+```
+
+Q3.4 More Catholic provinces tend to have
+
+A. Higher fertility
+
+B. Lower fertility
+
+C. No clear pattern in fertility
+
+
+Graded question:
+
+Write a paragraph [< 100 words] summarizing which features (if any) of
+the Swiss data were consistent with your expectations from our
+micro-economic models and which features (if any) were inconsistent.
+
+
+
+# Part 0. Preliminaries
+
+We begin by downloading some data and functions to be used in the lab.
+
+
+```{r}
+tot = 0
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_aging.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
+```
+
+> Note: the most helpful readings for this lab is Lee (2003) for Parts
+> 1 and 2 and Lee et al (2014) for parts 3, 4, and 5.
+
+
+# Part 1. Population change over the demographic transition.
+
+The first declines in mortality and fertility happened gradually in
+Europe. More recently, the pace of demographic transition has
+sped up. An early example of rapid demographic change, for which we
+have excellent statistics, is Japan.
+
+Until shortly after World War II, Japanese fertility remained
+high. Mortality rates were improving, and the resulting population
+growth was very fast -- indeed, rapid population growth was one of
+reasons that Japan gave for expanding its empire.
+
+After the War, fertility began to decline very rapidly.
+
+```{r}
+
+tfr.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_tfr.txt")
+year.vec <- tfr.data$Year
+tfr.vec <- tfr.data$TFR
+plot(year.vec, tfr.vec, type = "o",
+     main = "Japanese Period Total Fertility Rate")
+```
+
+In less than a decade, fertility fell to replacement levels near two
+children per woman.
+
+Q1.1 What do you think happened in 1966?
+
+A. There was a mistake in the data collection. Records were lost, or a
+calculation error must have been made.
+
+B. The economy crashed
+
+C. 1966 was an inauspicious year according to the Japanese zodiac, the
+year of the "fire horse" in which it was unlucky to have a daughter
+born.
+
+D. Everything in C *and*  further evidence of intentionality
+is that births were slightly higher both before and after 1966.
+
+{{
+qnumber = 1.1
+correct.answer = "D"
+hint = "Google 'Increased induced abortion rate in 1966, an aspect of
+a Japanese folk superstition.'"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Google 'Increased induced abortion rate in 1966, an aspect of
+a Japanese folk superstition.' (The next one is 2026)."
+}}
+
+
+
+We can see that the pace of mortality improvement was steady the
+entire time.
+
+```{r}
+e0.data <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_e0_female.txt")
+year.vec <- e0.data$Year
+e0.vec <- e0.data$Female
+plot(year.vec, e0.vec, type = "o",
+     main = "Japanese Period Life Expectancy at Birth, Female")
+```
+
+Life expectancy is greatly influenced by the level of child
+mortality. Right after WWII we see the enormous effects of reducing
+child mortality. Today, mortality improvement is still steady, but
+because the increases in survival are at older ages, the same pace of
+improvement in mortality rates adds fewer years of life expectancy at
+birth.
+
+
+Q1.2 What is the pace of life expectancy improvement from 1980 to to
+2010?
+
+A. About 1 year per year.
+
+B. About 2-3 years per decade
+
+C. About 1 month per year
+
+{{
+qnumber = 1.2
+correct.answer = "B"
+hint = "Life expectancy at birth goes from about 75 to about 85 over the course of 3 decades"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Japan has become the world leader both in the level of period
+life expectancy and the pace of improvement"
+}}
+
+
+Now we are ready to explore the history of Japan's age-structure.
+
+```{r}
+## read in matrix of population counts
+tmp <- read.table(file = "http://courses.demog.berkeley.edu/goldstein175/Basket/japan_pop_matrix_1947_2015.txt")
+colnames(tmp) <- gsub("X", "", colnames(tmp))
+Nxt.mat <- as.matrix(tmp)
+# ages 0-110 are rows of the matrix, years 1947-2015 are on the columns
+dim(Nxt.mat)
+# births for each year are given in the row labeled "0"
+print(Nxt.mat["0",]) # or equivalently 'print(Nxt.mat[1,])'
+
+```
+Q1.3 What is happening to the number of births from 2014 to 2015?
+
+A. They are increasing as a residual effect of past population growth.
+
+B. They are declining at a rate of 1 or 2 percent a year
+
+
+{{
+qnumber = 1.3
+correct.answer = "B"
+hint = "Inspect the first row of the matrix of population
+counts. Those age '0' are a good approximation of the number of
+births, since infant mortality is very low in Japan"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Fertility has been low so long in Japan that births are
+exponentially declining at a fairly steady rate"
+}}
+
+
+Let's now visualize the change in Japan's age structure. We start by
+viewing the change frame-by-frame:
+
+```{r}
+
+year.vec <- colnames(Nxt.mat)
+for (i in 1:length(year.vec))
+{
+    barplot(Nxt.mat[,i], horiz = T,
+            xlim = c(0, 2.5 * 10^6),
+            xlab = "Number of people N(x,t)", ylab = "Age x")
+    title(year.vec[i])
+##     Sys.sleep(1/10)
+}
+
+```
+
+Or we can compare a few snapshots every 20 years.
+
+```{r}
+my.year.vec <- c("1950", "1970", "1990", "2010")
+par(mfrow = c(1,4)) # this tells graphics window to display 1 row of 4 panels
+for (i in 1:length(my.year.vec))
+{
+    print(i)
+    this.year <- my.year.vec[i]
+    barplot(Nxt.mat[,this.year], horiz = T,
+            xlim = c(0, 2.5 * 10^6))
+    title(my.year.vec[i])
+}
+
+```
+
+
+If we look at the effects of fertility decline on the population
+age-structure, we can see a very young population in the 1950s,
+followed by a dramatic drop in the fraction of the young in the 1970s
+and 1980s. Since the 1980s, the smaller birth cohorts have entered the
+workforce, and the ratio of the elderly to workers has risen sharply.
+
+From the point of view of population age-structure, is Japan worse off
+today than it was right after WWII? From a well-being point of view,
+we care about the social and economic roles of people of different
+ages. Demographers use dependency ratios as summary statistics of the
+population age-distribution.. We will use the following conventions,
+where we define the youth as being aged 0-19, the workers aged 20-64,
+and old-age'd as aged 65+.
+
+* Youth Dependency Ratio: $ YDR = N(0-19) / N(20-64)$
+* Old-age Dependency Ratio: $ OADR = N(65+) / N(20-64)$
+* Total Dependency Ratio: $ TDR = YDR + OADR$
+
+We will use R to loop through each year and create vectors for the
+numbers of youth, workers, and elderly by year.
+
+```{r}
+
+x <- 0:110                              # ages
+
+young.vec <- apply(Nxt.mat[x %in% 0:19,], 2, sum)
+worker.vec <- apply(Nxt.mat[x %in% 20:64,], 2, sum)
+old.vec <- apply(Nxt.mat[x %in% 65:110,], 2, sum)
+
+ydr.vec <- young.vec/worker.vec
+oadr.vec <- old.vec/worker.vec
+tdr.vec <- oadr.vec + ydr.vec
+plot(year.vec, tdr.vec)
+
+```
+
+Q1.4 Wait, is something wrong?
+
+A. Yes, the total dependency ratio can not be greater than 1.0 -- we made
+a mistake.
+
+B. Yes, the total dependency ratio even with the contemporary, very aged
+population, is lower than it was before fertility decline. We made a
+mistake.
+
+C. No. This could be right.
+
+
+
+{{
+qnumber = 1.4
+correct.answer = "C"
+hint = "Not 'A' because a ratio can take values greater than 1.0. Not
+'B' because although the effect of aging on the YDR and OADR is clear,
+the net effect on the TDR is ambiguous"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Nothing is wrong. As we'll see below"
+}}
+
+Let's now look at the three dependency ratios on the same graph:
+
+```{r}
+
+plot(year.vec, oadr.vec, ylim = c(0, 1.5),
+     type = "l", col = "red", lwd = 3,
+     ylab = "Dependents per worker")
+lines(year.vec, tdr.vec, col = "black", lwd = 3)
+lines(year.vec, ydr.vec, col = "blue", lwd = 3)
+text(1960, .4, "Youth \n Dep Ratio",
+     col = "blue")
+text(1970, 1, "Total \n Dep Ratio",
+     col = "black")
+text(1960, .2, "Old \n Dep Ratio",
+     col = "red")
+
+```
+
+Now we can see that the youth dependency ratio has fallen more than
+the old-age dependency ratio has risen. Total dependency has not yet
+reached it's post-war highs.
+
+Q1.5 Why did the youth dependency ratio fall sooner than the old-age
+dependency ratio rises?
+
+A. Because when births fall, there is a lag of a few decades between
+fewer babies and fewer workers.
+
+B. Because total dependency fell and then rose.
+
+C. Because mortality fell before fertility
+
+
+{{
+qnumber = 1.5
+correct.answer = "A"
+hint = "A correct statement, but doesn't answer the question."
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "This lull in dependency is called the 'Demographic Dividend'"
+}}
+
+
+
+# Part 2. Japan's Future?
+
+We now project Japan's population (using the 1-sex projection model we
+covered in lecture) to see how the history of low
+fertility will play out over time. We assume here that fertility will
+remain at current levels. This will tend to produce quite a bit of
+population aging, more so that would occur if, as many expect,
+fertility were to rebound somewhat. On the other hand, we also assume
+no continued increase in longevity -- which is almost surely
+unrealistic -- and thus our projection will have fewer survivors to
+old age than is likely.  (Note: we also assume zero net migration --
+which we do for simplicity, but which also may not be implausible.)
+
+We begin by importing the projection matrix that made from 2014
+rates found in the Human Fertility and Human Mortality Databases.
+
+```{r}
+## you can skip the details on how this is read in
+tmp <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_projection_matrix_2014.txt")
+colnames(tmp) <- gsub("X", "", colnames(tmp))
+A.2014 <- as.matrix(tmp)
+## but do let's look at the first row
+print("Fertility rates: row 1 of the projection matrix")
+print("(look for non-zero values at ages where women tend give birth)")
+print(round(A.2014[1,],3))                       # [1,] indexes first row
+```
+
+And let's print some elements showing survivors
+```{r}
+print(A.2014[1:6, 1:6]) # the upper, left corner
+print(A.2014[90:96, 90:96]) # towards the lower, right corner
+```
+
+To see the whole matrix is a bit difficult since it is so large. You
+can scroll. But you can also do a 3-d picture.
+
+```{r}
+persp(x = 0:110,
+      y = 0:110,
+      z = t(A.2014),                    # transpose for cleaner view
+      phi = 35,                         # viewing angle
+      xlab = "Age ('in')",
+      ylab = "Age ('out')",
+      col = "pink",
+      expand = .2,
+      zlab = "Transition rate")
+```
+
+Here, the "fin" along the diagonal is survivorship and the very little
+ridge in front is the first row for reproduction.
+
+
+
+Q2.1 The sum of the first row elements should be closest to
+
+A. Life expectancy
+
+B. The total fertility rate, the average number of children a woman
+would have if she survived through childbearing.
+
+C. The net reproduction rate, the average number of newborn girl would
+have would have, accounting for her probability of dying before she
+completes childbearing.
+
+D. The average number of daughters the average woman would have if she
+survived through childbearing.
+
+{{
+qnumber = 2.1
+correct.answer = "D"
+hint = "By leaving out the survival elements, we are effectively
+conditioning on 100% survival of the women. As we mentioned
+in lecture, we project a one sex population."
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Yes, this is how many daughters a woman who experienced
+100% survival would have"
+}}
+
+
+## Projection
+
+Here is some code to project the 2014 population up to 2017.
+
+
+```{r}
+## create a new matrix to store the past and future population in by age
+x <- 0:110
+year.vec.new <- 1947:2100
+Nxt.mat.new <- matrix(NA,
+                      nrow = length(x),
+                      ncol = length(year.vec.new))
+dimnames(Nxt.mat.new) <- list(x, year.vec.new)
+Nxt.mat.new[, year.vec.new %in% year.vec] <- Nxt.mat
+
+## check to see how full it is
+image(y = x,
+      x = year.vec.new,
+      z = t(Nxt.mat.new))
+## another view (you can play with phi and theta values to change angle)
+persp(y = x,
+      x = year.vec.new,
+      z = t(Nxt.mat.new),
+      zlab = "Population N(x,t)",
+      xlab = "Time t",
+      ylab = "Age x",
+      phi = 70, theta = -25)
+```
+
+Now we project up to 2017.
+
+```{r}
+future.year.vec <- 2015:2017
+for (i in 1:length(future.year.vec))
+{
+    ## The Nxt matrix is indexed by columns with years as characters
+    ## so we to refer to N[,"2017"], not N[,2017] (which would be the
+    ## 2017th column)
+    ## To make this work, we first manipulate the years as numbers and
+    ## then convert them to characters before using them as indices.
+    to.year = future.year.vec[i]
+    from.year = to.year - 1
+    to.string <- as.character(to.year)
+    from.string <- as.character(from.year)
+    ## Now we can do our projection
+    print(to.string)
+    Nxt.mat.new[,to.string] <- A.2014 %*% Nxt.mat.new[,from.string]
+}
+```
+
+And we can view the results in several ways.
+
+```{r}
+image(y = x,
+      x = year.vec.new,
+      z = t(Nxt.mat.new))
+abline(v = 2014, col = "black", lwd = 1, lty = 2)
+
+persp(y = x,
+      x = year.vec.new,
+      z = t(Nxt.mat.new),
+      phi = 60, theta = -20)
+```
+
+
+### Analysis of Projection (your turn)
+
+For this section, you should create new r-code chunks.
+
+1. Project the population using the same "2014" projection matrix from
+   2017 to 2100. (You can do this by copying the code above and making
+   some small modifications.)
+
+2. Make a plot of the youth, old-age, and total dependency ratios from
+   1947 to 2100. (You can do this by copying the code we used for
+   calculating and graphing the intitial population Nxt.mat).
+
+
+Graded Question 1.
+
+A. Submit a copy of your graph of the dependency ratios from 1947
+to 2100. You can put your name on it by using the command
+
+> text(x = 2050, y = 1, "Alfred E. Newman")
+
+B. Will workers will have a harder time supporting dependents in 2100
+than in 1947? Please give a yes or no answer. But do state what you
+are assuming about the burden of different aged dependents. (Either
+answer can be correct, as long as it is consistent with your stated
+assumption.) [ < 25 words]
+
+
+
+# Part 3. Adding detail with refined age-schedules
+
+Do kids really "cost" the same as the elderly? Does a 20 year old
+produce as as much as a 50 year old? Does a 90 year old need more care
+than a 70 year old?
+
+Survey data enables age-specific estimates of consumption and
+production by age. The methodology for creating these estimates is
+somewhat complex, but the findings are quite robust. Here we take
+advantage of the schedules that were used by Ron Lee et al. (http://science.sciencemag.org/content/sci/suppl/2014/10/08/346.6206.229.DC1/Lee.SM.pdf) in
+order to examine at a finer scale the effects of age structure on the
+economy.
+
+Let's look at the estimates of production and consumption by single years
+of age in Japan.
+
+```{r}
+df <- read.table("http://courses.demog.berkeley.edu/goldstein175/Basket/japan_nta_schedules.txt")
+x <- 0:110
+cx <- df$cx                             # consumption by age
+yx <- df$yx                             # production by age
+## (techical note 1: this "yx" is actually labor income).
+## (technical note 2: we don't have data over age 90, so we extrapolated)
+yx[x > 90] <- 0
+cx[x > 90] <- 0
+
+million = 10^6
+plot(x, cx,
+     type = "l", col = "red",
+     ylim = c(0, 5 * million),
+     ylab = "cx, yx",
+     xlab = "age x",
+     main = "Consumption and production, \n Japan c. 2010")
+lines(x, yx, type = "l", col = "blue")
+```
+
+Note: the decline to zero at age 90 and beyond is because there is
+missing data. (We discuss this the effect of this missing data in
+Question 5 at the end of the lab, but for now we will assume the true
+values are zero.)
+
+Q3.1 What are plausible units for the y-axis
+
+A. Annual dollars per person by  year of age
+
+B. Life-time dollars per person up to that age
+
+C. Annual yen per person by  year of age
+
+D. Life-time yen per person up to that age
+
+{{
+qnumber = 3.1
+correct.answer = "C"
+hint = "There are about 113 yen to the dollar."
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Earnings peak at something like $45,000 per person, which sounds plausible"
+}}
+
+
+Q3.2 At what age do Japanese first produce as much as they consume?
+
+A. About age 45
+
+B. About age 25
+
+C. About age 20
+
+D. About age 60
+
+
+{{
+qnumber = 3.2
+correct.answer = "B"
+hint = "Look at the cross-overs"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Rising earnings coincide with less consumption (which
+includes educational expenses)."
+}}
+
+Q3.3 True or False. The schedules imply that the Japanese population
+consumes much more than they produce, since the area below the red
+line is much larger than the area below the blue line.
+
+A. True.
+
+B. False.
+
+{{
+qnumber = 3.3
+correct.answer = "B"
+hint = "In the population there are different numbers of people at
+each age."
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "In order to consider the total production and
+consumption, these ages need to be weighted by the population age distribution."
+}}
+
+
+### Support Ratios
+
+We can apply these more refined age-schedules of economic activity to
+the Japanese population that we have already observed and forecast
+from 1947 to 2100.
+
+The support ration in year $t% is defined as
+$$
+SR(t) = { \sum_x N(x,t) y(x,t) \over \sum_x N(x,t) c(x,t)},
+$$
+
+where
+* $N(x,t)$ is the number of people aged $x$ in year $t$,
+* $y(x,t)$ is the production per person aged $x$ in year $t$,
+and
+* $c(x,t)$ is the consumption per person aged $x$ in year $t$.
+
+In what follows, we assume that $y(x,t)$ and $c(x,t)$ remain constant
+at the levels observed in about 2010.
+
+We now calculate the support ratio over the entire period,
+1947-2100. (Just make sure that you have done your projection already,
+so that your "Nxt.mat.new" is already filled in completely.)
+
+```{r}
+SR.vec <- NULL
+for (i in 1:length(year.vec.new))
+{
+    total.production.of.population <- sum(yx * Nxt.mat.new[,i], na.rm = T)
+    total.consumption.of.population <- sum(cx * Nxt.mat.new[,i], na.rm = T)
+    SR.vec[i] <- total.production.of.population/
+        total.consumption.of.population
+}
+plot(year.vec.new, SR.vec)
+```
+
+Q3.4 Taking into account the detailed profiles of consumption and
+production by age, what does Support Ratio show about dependency in
+2100 compared to 1947?
+
+A. The Support Ratio is lower in 2100 than in 1947, so this means less
+dependency.
+
+B. The SR is lower in 2100 than in 1947, so this means there are fewer
+producers per equivalent-unit consumer, effectively *increasing*
+dependency.
+
+{{
+qnumber = 3.4
+correct.answer = "B"
+hint = "Look at the numerator and denominator of the definition and
+ask if it is good to have a bigger or smaller SR"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "Yes, assuming that the age profiles of consumption and
+production remain unchanged."
+}}
+
+
+# Part 4. Optimimum fertility (using stable populations)
+
+In this final section of the lab, we try to reproduce some of the
+results on optimal fertility in the Lee et al. reading.
+
+We follow Lee et al in optimising is the "support ratio",
+but this time with stable opulation age structures
+
+$$
+SR = { \sum_x n_r(x) y(x) \over \sum_x n_r(x) c(x)},
+$$
+
+where $n_r(x)$ is proportion of  people aged $x$ in the stable
+pouplation with exponential growth rate $r$, $y(x)$ is the
+production per person aged $x$ observed in 2010, and $c(x)$ is the
+consumption per person aged $x$ observed in 2010.
+
+In a stable population, we derived in class the result that
+$$
+n_r(x) = b e^{-rx} \ell(x),
+$$
+where $n_r(x)$ is the proportion of people aged $x$ in a stable
+population with exponential growth rate $r$.
+
+Substituting, the stable age formula gives us
+$$
+SR(r) = { \sum_x e^{-rx} \ell(x) y(x) \over \sum_x e^{-rx} \ell(x) c(x)},
+$$
+
+We can now use this formula to study how the support ratio will vary
+with the growth rate of the population and with fertility.
+
+Let's begin by specifying a vector with growth rates corresponding to
+different total fertility
+
+```{r}
+## let TFR range from 1 to 3, in 1/10 of a child increments
+tfr.vec <- seq(from = 1, to = 3, by = .1)
+## calculate implied pop growth rate "r"
+r.vec <- log(tfr.vec / 2.05) / 30
+## Here, we divide number of children of both sexes by 2.05 to get the
+## number of daughters (since about 105 boys are born per 100
+## girls). The generation length is assumed to be 30 years.
+plot(tfr.vec, r.vec)
+```
+
+Now let's calculate the support ratio $SR(r)$ for each value of
+exponential growth.
+
+First we need a survival curve. For this we use the subdiagonal of
+the projection matrix, which is a close enough for our purposes.
+```{r}
+## (no need to understand this)
+surv.subdiagonal.of.projection.matrix <- diag(A.2014[-1, -ncol(A.2014)])
+Lx <- cumprod(c(1, surv.subdiagonal.of.projection.matrix))
+## check to make sure it gives reasonable life expectancy
+e0.check <- sum(Lx)
+print(e0.check)
+```
+
+
+```{r}
+SR.vec <- NULL
+for (i in 1:length(r.vec))
+{
+    r <- r.vec[i]
+    nx.r <- exp(-r * x) * Lx
+    total.production.of.population <- sum(yx * nx.r)
+    total.consumption.of.population <- sum(cx * nx.r)
+    SR.vec[i] <- total.production.of.population/
+        total.consumption.of.population
+}
+## let's plot as a function of "r"
+plot(r.vec, SR.vec, axes = T)
+## and again as a function of tfr
+plot(tfr.vec, SR.vec, axes = T)
+## now we can add a line at the maximum by eyeballing and guessing the
+## value
+abline(v = 2.6)
+## or more exactly
+opt.tfr <- tfr.vec[which.max(SR.vec)]
+abline(v = opt.tfr, col = "red")
+print(opt.tfr)
+```
+
+We see here that the "optimal" fertility rate is greater than 2.
+
+
+Q4.1 This value corresponds to which value of table 2 on page 232 of in Lee et al.
+
+A. 1.34
+
+B. 2.70
+
+C. 2.33
+
+D. 1.88
+
+E. 1.57
+
+{{
+qnumber = 4.1
+correct.answer = "C"
+hint = "Match the concept in the column headers"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "We come very close indeed, but probably use a slightly
+different mortality schedule. Something else to think about is why the
+optimal TFR for the Fiscal Support Ratio is even higher."
+}}
+
+The other thing to note is the Support Ratio with optimal fertility
+rate is not that much higher than that obtained with plus or minus half a
+child or so. The curve $SR(r)$ has a very flat peak. This is because
+when comparing across stable populations, the increase in the old from
+slower pouplation growth is largely offset by decrease in the young.
+
+
+# Part 5. Another Capital Idea
+
+To finish up, let's combine the fertility on  population age
+structure, with the effects of fertility on the population growth rate
+and capital accumulation. We can use the Solow model once
+again to gain some insights into both the qualititative and the
+quantitative effects of population growth rates.
+
+There are possible many ways to do this. (Those interested in the
+details can consult the "supplementary materials" of the Lee et al
+paper in Science).  For the lab, we will reproduce the "low cost capital
+approach," which assumes that the capital-output ratio stays constant
+over time. (This is what we already saw Piketty building upon.)
+
+In the Solow model, we saw that if one wants to perserve a constant
+stock of capital per person, faster population growth rates need to be
+matched with larger fractions of income saved.
+
+In the steady state, we have savings per person equaling the new
+capital needed to keep up with population growth $n$, depreciation
+$d$, and technological advances $\lambda$,
+$$
+s y = (n + d + \lambda) k
+$$
+
+We can rearrange this steady-state to give us.
+
+$$
+s = (n + d + \lambda) (k / y)
+$$
+
+Lee et al.  assume standard values such that $k/y \approx 3.0$, $d
+= 0.05$, and $\lambda = .02$. This allows calculation of $s$ as a
+function only of $n$.
+
+```{r}
+d = .05
+lambda = .02
+ky.ratio = 3.0
+s.vec = (r.vec + d + lambda) * ky.ratio
+plot(r.vec, s.vec)
+```
+
+To take account of the effect of increased savings on the support
+ratio, we reduce the effective production of workers by a factor of
+$(1-s)$. This operationalizes the idea that the more savings is
+required, the less produciton is available for consumption.
+
+$$
+SR_{capital} = { \sum_x (1- s_r) e^{-rx} \ell(x) y(x) \over \sum_x e^{-rx} \ell(x) c(x)},
+$$
+
+where we use the savings rate $s_r$ that corresponds to the
+population growth rate $r$.
+
+```{r}
+
+## This is  the "low capital" case, where the capital-income ratio is
+## fixed at 3.0. This is would happen if we had Cobb-Douglas.
+
+## In this case, the a share "s" needs to be set aside from income as
+## savings, and cannot be consumed. So we exclude this share from the
+## numerator of the support ratio.
+
+SR.low.capital.vec <- NULL
+
+## let's get the savings rate for each growth rate
+s.vec <- (r.vec + d + lambda) * ky.ratio
+plot(tfr.vec, r.vec)
+for (i in 1:length(r.vec))
+{
+    r <- r.vec[i]
+    my.Nx <- Lx * exp(-r * x)
+    s <- s.vec[i]
+    SR.low.capital.vec[i] <-  sum((1- s) * my.Nx * yx) / sum(my.Nx * cx)
+}
+plot(tfr.vec, SR.low.capital.vec)
+opt.tfr.low.capital <- tfr.vec[which.max(SR.low.capital.vec)]
+print(opt.tfr.low.capital)
+abline(v = opt.tfr.low.capital, col = "red")
+```
+
+
+# Graded Questions
+
+> 1. See above
+
+> 2. If a population sees a large fertility decline in year "0"
+
+> A. About how many years later would the total dependency ratio reach a
+minimum?  [1 sentence is fine]
+
+> B. About how long after this would the TDR stay low? [1 sentence is fine]
+
+> C. Explain why such a low TDR could not be achieved in a stable
+>	population simply by varying the exponential growth
+>	rate. [ About 2 sentences]
+
+> 3. We compared the effect of a very young age-structure in 1947 with
+>    the very old age structure in 2100 using the Total Dependency
+>    Ratio and the Support Ratio. The SR calculation suggested that
+>    indeed the aged population in 2100 would be a greater economic
+>    burden than the young pouplation in 1947. But the TDR calculation
+>    did not. What feature of the consumption profile do you think is
+>    responsible for this result?  [2 or 3 sentences is fine]
+
+> 4. If robotization were able to make the economy even more capital
+>    intensive, say increasing the capital-income ratio from 3.0
+>    to 5.0., would the optimal fertility rate be higher or lower than
+>    we found above? Explain briefly [< 50 words]
+
+> 5. Our data for Japanese consumption and production ends at age 90
+>    (and here we assumed both were zero after this age). What do you
+>    think would happen to optimum fertility if we extended both
+>    schedules observed at age 90 out to 110? Would optimal fertility be
+>    higher or lower? (Hint: look at your graph of the age schedules)
+>    [<50 words]
+
+> 6. Does including capital in a model of the economy make pro-baby
+>    politics more attractive or less attractive? Explain based on the
+>    results of the final part of the lab. [1 sentence is fine]
+
+
+Congratulations! You are finished with Lab 6.
+
+
+
+
