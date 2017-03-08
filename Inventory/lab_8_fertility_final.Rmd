@@ -16,7 +16,8 @@ not be consistent with historical experience.
 > Note: The first part of the lab includes some mathematical
 > derivations that we did not fully cover in class. You should
 > understand what analysis is done (and why), but you don't need to be
-> able to derive this yourself.
+> able to derive this yourself. To display the equations you may need
+> to click on them or below them in the R Notebook.
 
 > Further note: The graded questions are interspersed throughout the
 > lab. They should be numbered consecutively.
@@ -181,12 +182,12 @@ $$
 
 $$
 {d\log U(N) \over d N} = {-a (p + cw) \over
-\left[(I + wT) - (p + cw) N \right]} + {(1-a) / N}
+\left[(I + wT) - (p + cw) N \right]} + {(1-a) \over N}
 $$
 
 When ${d\log U(N) \over d N} = 0$,
 $$
-{(1-a) / N} = {a (p + cw) \over
+{(1-a) \over N} = {a (p + cw) \over
 \left[(I + wT) - (p + cw) N \right]}
 $$
 
@@ -216,7 +217,7 @@ will have on the choice of $N$.
 
 For example, increasing $a$ will clearly reduce $N^*$. We can write
 $$
-\partial N \over \partial a < 0
+{\partial N \over \partial a} < 0
 $$
 
 (The symbol $\partial$ indicates a partial derivative, differentiating
@@ -224,27 +225,27 @@ only with respect one, individual variable.)
 
 Likewise, we can see that
 $$
-\partial N \over \partial I > 0
+{\partial N \over \partial I} > 0
 $$
 
 And since $p$ and $c$ are both in the denominator,
 $$
-\partial N \over \partial c < 0
+{\partial N \over \partial c} < 0
 $$
 and
 $$
-\partial N \over \partial p < 0
+{\partial N \over \partial p} < 0
 $$.
 
 The only effect that is ambiguous in sign is
 $$
-\partial N \over \partial w \lessgtr 0
+{\partial N \over \partial w} \lessgtr 0
 $$.
 
 Some additional mathematical manipulation shows that
 
 $$
-\partial N \over \partial w <  0, \mbox{ when } {T\over c} < {I \over p}.
+{\partial N \over \partial w} <  0, \mbox{ when } {T\over c} < {I \over p}.
 $$.
 
 So, while in class, we questions the usefulness of the cost-of-time
@@ -354,7 +355,15 @@ theories seem to be applicable in this case.
 Read results of help(swiss) and answer the following T/F questions
 ```{r}
 help(swiss)
+
+
 ```
+
+The fertility measure goes from 0 to 100, with 100 being an estimate
+of the biological maximum fertility (under normal conditions). If
+you're interested in the details, see
+(http://opr.princeton.edu/archive/pefp/indices.aspx).
+
 
 Q1.1 Agriculture is the percentage of land area  dedicated to farming.
 A. True
