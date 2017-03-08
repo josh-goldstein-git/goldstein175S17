@@ -505,9 +505,7 @@ abline(lm(Fertility ~ Infant.Mortality, data = swiss), lty = 2)
 Q3.1 Higher infant mortality is associated with
 
 A. Higher fertility
-
 B. Lower fertility
-
 C. No clear pattern in fertility
 
 {{
@@ -528,9 +526,7 @@ explanation = "This is consistent with our expectations above."
 Q3.2 Higher proportions working in agriculture are  associated with
 
 A. Higher fertility
-
 B. Lower fertility
-
 C. No clear pattern in fertility
 
 {{
@@ -551,9 +547,7 @@ explanation = "Is this consistent with your expectations above?"
 Q3.3 Higher examination scores are  associated with
 
 A. Higher fertility
-
 B. Lower fertility
-
 C. No clear pattern in fertility
 
 {{
@@ -574,9 +568,7 @@ explanation = "Is this consistent with your expectations above?"
 Q3.4 More education is associated with
 
 A. Higher fertility
-
 B. Lower fertility
-
 C. No clear pattern in fertility
 
 {{
@@ -598,9 +590,7 @@ explanation = "Is this consistent with your expectations above?"
 Q3.5 More Catholic provinces tend to have
 
 A. Higher fertility
-
 B. Lower fertility
-
 C. No clear pattern in fertility
 
 
