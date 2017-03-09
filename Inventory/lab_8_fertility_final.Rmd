@@ -1,7 +1,6 @@
 ---
 title: "Econ/Demog C175 Lab for Week 8: Micro-economic Models of
-Fertility and an Investigation of Historical Switzerland
-few children?"
+Fertility and an Investigation of Historical Switzerland"
 output: html_notebook
 ---
 
@@ -46,7 +45,7 @@ source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R"
 The Cost_of_time app computes the optimal bundle (N, X) of N children
 and X-dollars worth of consumer goods. The app plots two choices, one
 based on the initial values of $(w, p, c, and I)$ and one for separate
-values $(w', p', c', and I'). The app is available at
+values $(w', p', c', and I')$. The app is available at
 (http://shiny.demog.berkeley.edu/josh/) under cost_of_time. We
 recommend resizing the window of the app and playing with the font
 size (cmd-shift+, cmd-shift- on a mac) until the graph is fairly
@@ -70,7 +69,7 @@ consume.
 ### Prices
 
 For simplicity, we let there just be one kind of "other goods", which
-we denote $X$. And we let the price be $1 per unit of $X$.
+we denote $X$. And we let the price be 1 dollar per unit of $X$.
 
 
 The price of children has two components:
@@ -120,7 +119,7 @@ cost per child is thus $p + c w$.
 
 The choice of how many children and how much "other goods" is made so
 as to make the parents as happy as possible. We can use the same
-Cobb-Douglas formulation that we used for production functinos earlier
+Cobb-Douglas formulation that we used for production functions earlier
 in the semester as a convenient model for utility. We let the utility
 of a particular choice of $X$ and $N$ be
 $$
@@ -174,7 +173,7 @@ $$
 3. Maximization (the rate of change at the optimum should be zero)
 
 At the maximum, $U'(N) = 0$. But it is a bit easier to work with
-$\log U$, which will reach a maximimum at the same value of $N$.
+$\log U$, which will reach a maximum at the same value of $N$.
 
 $$
 \log U(N) = a\log{ \left[(I + wT) - (p + cw) N \right]} + (1-a)\log N
@@ -248,12 +247,12 @@ $$
 {\partial N \over \partial w} <  0, \mbox{ when } {T\over c} < {I \over p}.
 $$.
 
-So, while in class, we questions the usefulness of the cost-of-time
+So, while in class, we questioned the usefulness of the cost-of-time
 model in making predictions about the effect of a wage increase on
 fertility, we see here that the model makes clear predictions about
-the other variables. Increases in outside income $I$ unambigously
+the other variables. Increases in outside income $I$ unambiguously
 increase fertility. Increases in the price of children through $c$ or
-$p$ unambigously reduce fertility. And changes in taste, by changing
+$p$ unambiguously reduce fertility. And changes in taste, by changing
 the relative preferences $a$ for children vs. goods, are also
 unambiguous in their effect.
 
@@ -277,12 +276,14 @@ the app to its starting state.)
 > If we increase the hourly wage $w'$ from $15 to $30, what happens to
 > fertility? [1 sentence with actual values.]
 
-> What happens to utility? [1 sentence with actual values.]
+> What happens to utility (the values of the indifference contours)?
+> [1 sentence with actual values.]
 
 > What happens to consumption of goods? [1 sentence with actual values.]
 
-> 2. If we increase outside income $I'$ from 1000 per week to $1,500 a
->    week, what happens to fertility? [1 sentence with actual values.]
+> 2. If we increase outside income $I'$ from 1000 dollars per week to
+>    2,000 dollars per week, what happens to fertility?
+>    [1 sentence with actual values.]
 
 > 3. If we reduce fixed costs $p'$ from $100 per week to $50 per week, what
 >    happens to fertility? [1 sentence with actual values.]
@@ -313,7 +314,7 @@ the app to its starting state.)
 >   have on fertility. (For example, if the scenario was a cut in the
 >   inheritance tax, you could say that on average this would increase
 >   non-wage income I, and that the effect of increasing I would be
->   unambigously to increase fertility.)
+>   unambiguously to increase fertility.)
 
 > A. The government reduces the costs of elementary schooling (e.g. by
 >    getting rid of school fees). What parameter would you change, and
