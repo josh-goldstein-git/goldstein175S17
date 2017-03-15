@@ -1,4 +1,3 @@
-
 # Chinese Fertility, Sex-Ratios and the 1-child policy
 
 In this lab we will look at results from the 1990 census. A 1% sample
@@ -51,8 +50,7 @@ children "progress" to having a 4th birth.)
 # Part 0. Load the data
 
 ```{r}
-df <- read.csv("china_1990_first_three_kids_by_age_and_sex.csv",
-               na.string = "")
+df <- read.csv("http://courses.demog.berkeley.edu/goldstein175/Basket/china_1990_first_three_kids_by_age_and_sex.csv")
 head(df)
 
 ## for convenience we assign the contents of this data.frame to
@@ -192,8 +190,8 @@ Let's see if the same suprising trend holds true for 2nd births.
 
 We copy and paste the relevant code above to calculate
 "pi.2.by.age.vec" and plot this on the same graph using the following
-commands. Insert your name using the text function in the upper
-left. For the graded questions you will submit a copy of this graph.
+commands. You can insert your name using the text function in the
+upper left.
 
 ```{r}
 pi.2.by.age.vec <- NULL             # initialize a vector for storing
