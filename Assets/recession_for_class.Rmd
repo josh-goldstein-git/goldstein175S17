@@ -1,0 +1,234 @@
+# The Great Recession and Fertility in the United States
+
+
+To begin with let's look at the plot of historical fertility rates in
+the United States.
+
+Q1. Does a better economy ...
+
+A. Always lead to higher fertility
+
+B. Sometimes lead to higher fertility and sometimes lead to lower
+fertility
+
+C. Usually lead to higher fertility
+
+D. I see no relationship?
+
+
+Q2. In terms of our cost-of-time model, if a better economy raised
+fertility, then this would mean
+
+A. The substitution effect dominates the income effect
+
+B. The income effect dominates the substitution effect
+
+
+Q3. If men and women become more alike, then what would we expect?
+
+A. Stronger substitution effects
+
+B. Stronger income effects
+
+C. It's not so clear ...
+
+Q4. What do we expect in the Great Recession?
+
+A. Lower fertility
+
+B. Higher fertility
+
+C. No change
+
+Q5. What do we expect now that the Great Recession is over?
+
+A. Fertility to return to it's previous level?
+
+B. Fertility to be even higher, making up for lost time.
+
+C. Fertility to stay lower, until people are really sure the recovery
+will continue.
+
+# Data analysis
+
+We will look at unemployment rates and fertility rates.
+
+## Importing the data
+
+```{r}
+prefix <- "http://courses/demog.berkeley.edu/goldstein175/Basket"
+usa.df <- read.csv(url = paste0(prefix,"usa_tfr_ue_by_year.csv"))
+state.df <- read.csv(url = paste0(prefix,"state_tfr_ue_by_year.csv"))
+```
+
+## The Great Recession
+
+### Nationally
+
+```{r}
+
+## save ourselves some typing
+tfr <- usa.df$tfr
+ue <- usa.df$ue
+year <- usa.df$year                     # 2001:2015
+## to compare UE in year of conception
+ue.before <- ue[year %in% 2001:2014]
+tfr.after <- tfr[year %in% 2002:2015]
+```
+
+We can plot the relationships
+```{r}
+
+par(mfrow = c(2,2))
+plot(year, tfr, type = "o",
+     col = "blue",
+     main = "Total Fertility Rates, USA")
+plot(year, ue, type = "o",
+     col = "red",
+     main = "Unemployment, USA")
+plot(ue, tfr, type = "p",
+     col = "black",
+     main = "TFR by unemployment, USA")
+abline(lm(tfr ~ ue))
+plot(ue.before, tfr.after,
+     main = "TFR by prior year's unemployment")
+abline(lm(tfr.after ~ ue.before))
+```
+
+Q. Is higher unemployment associated with lower fertility?
+
+
+A. Yes, throughout the whole period
+
+B. No, higher unemployment is associated with higher fertility.
+
+C. It depends on which period we look at
+
+D. I have no idea!
+
+Q. Does it make a difference if we look at conditions at the time of
+conception vs. time of birth?
+
+A. Not much
+
+
+Let's look at the period up to 2011, separately.
+
+```{r}
+
+s <- year %in% 2001:2011
+par(mfrow = c(2,2))
+plot(year, tfr, type = "o",
+     col = "blue",
+     main = "Total Fertility Rates, USA")
+points(year[s], tfr[s], pch = 19, col = "grey")
+plot(year, ue, type = "o",
+     col = "red",
+     main = "Unemployment, USA")
+points(year[s], ue[s], pch = 19, col = "grey")
+plot(ue, tfr, type = "p",
+     col = "black",
+     main = "TFR by unemployment, USA")
+points(ue[s], tfr[s], pch = 19, col = "grey")
+## abline(lm(tfr ~ ue))
+abline(lm(tfr.after ~ ue.before, subset = s),
+       col = "grey", lty = 2)
+plot(ue.before, tfr.after,
+     main = "TFR by prior year's unemployment")
+## abline(lm(tfr.after ~ ue.before))
+abline(lm(tfr.after ~ ue.before, subset = s),
+              col = "grey", lty = 2)
+points(ue.before[s], tfr.after[s], pch = 19, col = "grey")
+```
+
+So, we see that the recession seems to have lowered fertility on a
+national level.
+
+We can also look at the states to see if states that were harder hit,
+saw a bigger decline in fertility.
+
+Import a fancy function to plot an panel of states in the shape of the USA
+```{r}
+## old: source("recession_functions_for_class.R")
+source(paste0(prefix,"recession_functions_for_class.R"))
+```
+
+Now display the state TFR and UE.
+
+```{r}
+
+state.panel.plot(x = state.df$year,
+                 y = state.df$tfr,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = 2.0,
+                 new = T,
+                 type = "l",
+                 col = "black",
+                 legend.ylab = "tfr",
+                 legend.xlab = "year",
+                 title = "TFR by state, 2001-2015, all",
+                 ylim = c(1.5, 3))
+state.panel.plot(x = state.df$year,
+                 y = state.df$tfr.filt,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = 2.0,
+                 col = "blue",
+                 type = "l",
+                 lwd = 2,
+                 new = F,
+                 ylim = c(1.5, 3))
+
+```
+
+Now look at UE
+
+```{r}
+## now do unemployment
+state.panel.plot(x = state.df$year,
+                 y = state.df$ue,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = c(.05, .1),
+                 col = "red",
+                 type = "l",
+                 lwd = 2,
+                 new = T,
+                 ylim = c(0, .15))
+
+```
+
+
+```{r}
+## now do a scatter plot
+par(c(1,1))
+plot(state.df$ue,
+     state.df$tfr.filt, type = "p")
+m0 <- lm(tfr.filt ~ ue , data = state.df)
+abline(m0)
+```
+
+Q. Do "fracking states" see less effect of Recession?
+
+Q. Does their fertility also not fall as much?
+
+Q. How about coastal states?
+
+Q. Which states have biggest increase in unemployment?
+
+Q. Which states have biggest decline in fertility?
+
+Overall, it seems like income effect dominates. 200 years after
+Malthus, are we still in his regime?
+
+## Concluding discussion question:
+
+Going back to national plot:
+
+Why hasn't TFR recovered as UE has gone down?
+
+How could we test your theories?
+
+
+

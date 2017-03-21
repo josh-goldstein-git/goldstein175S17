@@ -1,3 +1,8 @@
+---
+title: "Chinese Fertility, Sex-ratios, and the 1-child Policy"
+date: March 14, 2017
+output: html_document
+---
 # Chinese Fertility, Sex-Ratios and the 1-child policy
 
 In this lab we will look at results from the 1990 census. A 1% sample
@@ -50,7 +55,21 @@ children "progress" to having a 4th birth.)
 # Part 0. Load the data
 
 ```{r}
-df <- read.csv("http://courses.demog.berkeley.edu/goldstein175/Basket/china_1990_first_three_kids_by_age_and_sex.csv")
+tot = 0
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_china.R")
+source("http://courses.demog.berkeley.edu/goldstein175/Basket/check_functions.R")
+```
+
+```{r}
+df <- read.csv("http://courses.demog.berkeley.edu/goldstein175/Basket/china_1990_first_three_kids_by_age_and_sex.csv",
+               na.string = "")
+
+## Note: I've added 'na.string = ""' as an option, a change from the
+## earlier code. This change means we don't have to make the change I
+## made in class to to the function get.prop.female(), because now the
+## empty character strings for sex2 and sex3 are correctly interpreted
+## as "NA"
+
 head(df)
 
 ## for convenience we assign the contents of this data.frame to
@@ -130,6 +149,9 @@ get.prop.female <- function(sex)
     ## this function takes a vector of sexes ("m" and "f")
     ## and computes the proportion female
     round(prop.table(table(sex[!is.na(sex)]))["f"],4)
+    ## Technical note: this is the original version of this function, which
+    ## should now work fine since all the empty strings "" in the
+    ## 'sex' variable have been read-in as "NA".
 }
 
 ## usage example:
@@ -167,6 +189,7 @@ plot(age.vec, pi.1.by.age.vec,
 abline(v = 10, lty = 2) # approximate begining of 1CP (1990 - 10 =
                         # 1980 = about 9 months after 1CP introduction
                         # in 1979
+abline(h = .5, lty = 2)
 ```
 
 Interesting. It looks like the proportion of 1st births that are girls
@@ -176,22 +199,22 @@ the opposite of what we expected.
 
 Q1.1 We were expecting ...
 
-A. $pi_f$ to increase with age, because fewer girls would be born
+A. $\pi_f$ to increase with age, because fewer girls would be born
 after the 1CP.
 
-B. $pi_f$ to decrease with age, because fewer girls would be born
+B. $\pi_f$ to decrease with age, because fewer girls would be born
 after the 1CP.
 
-C. No change in $pi_f$ because it's $pi$-day and $pi$ always
+C. No change in $\pi_f$ because it's $\pi$-day and $\pi$ always
 equals 3.14...
 
 
 Let's see if the same suprising trend holds true for 2nd births.
 
-We copy and paste the relevant code above to calculate
+We have copied and pasted the relevant code above to calculate
 "pi.2.by.age.vec" and plot this on the same graph using the following
-commands. You can insert your name using the text function in the
-upper left.
+commands. Insert your name using the text function in the upper
+left. For the graded questions you will submit a copy of this graph.
 
 ```{r}
 pi.2.by.age.vec <- NULL             # initialize a vector for storing
@@ -405,10 +428,22 @@ is stronger after the 1CP
 
 E. All of the above.
 
+{{
+qnumber = 1.1
+correct.answer = "E"
+hint = "More than one of these are correct"
+instructions = "Replace the NA with your answer (e.g., 'A' in quotes)"
+explanation = "'A' and 'B' are true. 'C' is a bit more subjective, but
+looking at the ratio it is 'largely stable'. 'D' is also more
+subjective but we do see some tailing off at the older ages of the
+ratio, which suggests that maybe there is a larger effect at the
+younger ages, so 'slight suggestion' is true"
+}}
+
+
+
+
 > Congratulations. We have finished the in-class lab.
-
-#####################################################################
-
 
 # Graded Question
 
@@ -450,16 +485,16 @@ for (i in 1:length(age.vec))
     ## insert additional code here
 }
 
-plot(age.vec, ppr2.ff.vec, col = "pink", lty = 1, type = "l", ylim =
-                                                                  c(0, 1)) lines(age.vec, ppr2.fm.vec, col = "pink", lty = 2)
+plot(age.vec, ppr2.ff.vec, col = "pink", lty = 1, type = "l",
+     ylim = c(0, 1))
+lines(age.vec, ppr2.fm.vec, col = "pink", lty = 2)
 ## insert additional code here
 ```
 
 > (Note1: for R-gurus only, the line `!is.na(sex2)` means "where sex2
->     is not > equal to NA". Since sex2 is NA when only 1 child has
->     been born, > this is equivalent to saying "consider only the
->     households with at > least two childre". A fancier function might
->     be able to do this > checking and cleaning automatically.)
+>     is not equal to NA". Since sex2 is NA when only 1 child has
+>     been born, this is equivalent to saying "consider only the
+>     households with at least two children".)
 
 
 > 3. Plot your results, so that all of the vectors are on the same
@@ -475,13 +510,12 @@ ppr2.mm.vec  such that ' col ="blue", lty = 1 '  (solid blue)
 
 
 > 4. Which of the following appears to be the tendency among Chinese
->    parents? A. They prefer at least 1 boy and 1 girl. B. They prefer
->    at least 1 boy. C. They prefer at least 1
->    girl. [Choose the best answer and explain < 50 words]
+>    parents who have already had two children? A. They prefer at
+>    least 1 boy and 1 girl. B. They prefer at least 1 boy. C. They
+>    prefer at least 1 girl. [Choose the best answer and explain < 50 words]
 
 > 5. Does the analysis of 3rd births reinforce or contradict our analysis
->    of 2nd births? [A few sentences is fine]
-
+>    of 2nd births? [< 50 words]
 
 > Congratulations. You've finished the graded portion of the lab on
 > China.

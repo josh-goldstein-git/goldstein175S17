@@ -1,0 +1,51 @@
+state		row column
+"Maine" 	1   11
+"Vermont"	2   10
+"New Hampshire"	2   11
+"Washington"	3   1
+"Idaho"		3   2
+"Montana"	3   3
+"North Dakota"	3   4
+"Minnesota"	3   5
+"Illinois"	3   6
+"Wisconsin"	3   7
+"Michigan"	3   8
+"New York"	3   9
+"Rhode Island"	3   10
+"Massachusetts"	3   11
+"Oregon"	4    1
+"Nevada"	4    2
+"Wyoming"	4    3
+"South Dakota"	4    4
+"Iowa"		4    5
+"Indiana"	4    6
+"Ohio"		4    7
+"Pennsylvania"	4    8
+"New Jersey"	4    9
+"Connecticut"	4   10
+"California"	5    1
+"Utah"		5    2
+"Colorado"	5    3
+"Nebraska"	5    4
+"Missouri"	5    5
+"Kentucky"	5    6
+"West Virginia"	5    7
+"Virginia"	5    8
+"Maryland"	5    9
+"Delaware"	5    10
+"Arizona"	6    2
+"New Mexico"	6    3
+"Kansas"	6    4
+"Arkansas"	6    5
+"Tennessee"	6    6
+"North Carolina"  6    7
+"South Carolina"  6    8
+"Washington DC"	6    9
+"Oklahoma"	  7    4
+"Louisiana"	  7    5
+"Mississippi"	  7    6
+"Alabama"	  7    7
+"Georgia"	  7    8
+"Texas"		  8    4
+"Florida"	  8    9
+
