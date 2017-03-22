@@ -11,7 +11,8 @@ graded questions are at the end.
 # The Great Recession and Fertility in the United States
 
 To begin with let's look at the plot of historical fertility rates in
-the United States.
+the United States. (We did this in class, based on the slide from a
+previous lecture.)
 
 Q1. Does a better economy ...
 
@@ -116,6 +117,14 @@ Q. Does it make a difference if we look at conditions at the time of
 conception vs. time of birth?
 
 A. Not much
+
+B. Not much and this is suggestive evidence that people could feel the
+economy changing at least 9 months before unemployment changed
+
+C. Not much but there are very few observations here and so we can't
+really say anything conclusive.
+
+D. All of the above.
 
 
 Let's look at the period up to 2011, separately.
@@ -269,12 +278,17 @@ college education.
 ```{r}
 ## Here is some code for code for plotting the unemployment rates
 ## by education. You can modify this slightly to produce a plot of tfr rather than "ue" (unemployment).
-plot(year.vec, ue.nocollege, pch = "n", type = "o",
-     col = "red", ylim = c(0, .2),
+plot(year.vec, ue.nocollege,
+     pch = "n",                         # the letter 'n' as plotting symbol
+     type = "o",                        # points "over" lines
+     col = "red",                       # color
+     ylim = c(0, .2), # limits on y-axis (you'll want to change these)
      ylab = "unemployment rate")
 ## the "lines()" functions adds a line to an existing plot
-lines(year.vec, ue.college, pch = "c", type = "o",
-     col = "blue")
+lines(year.vec, ue.college,
+      pch = "c",                        # the letter 'c' as plotting symbol
+      type = "o",
+      col = "blue")
 ```
 
 ```{r}
