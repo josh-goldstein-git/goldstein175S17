@@ -30,8 +30,8 @@ state.panel.plot <- function(x,
     for (i in 1:length(state.name))
     {
         my.state = state.name[i]
-        print(i)
-        print(my.state)
+#        print(i)
+#        print(my.state)
         s <- which(pos.df$state == my.state) # index for position data
         if (length(s) > 0)
         {
@@ -66,7 +66,7 @@ state.panel.plot <- function(x,
 
             ## print(state[ss])
             par(mfg = my.mfg)
-            print(par()$mfg)
+#            print(par()$mfg)
             ## now do our plot
             plot(x[ss], y[ss],
                  axes = F,
