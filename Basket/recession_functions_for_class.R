@@ -11,7 +11,7 @@ state.panel.plot <- function(x,
 {
     ## panel positions for pseudo USA layout
     prefix <- "http://courses.demog.berkeley.edu/goldstein175/Basket/"
-    pos.df <- read.table(paste(prefix, "state_grid_position.txt"),
+    pos.df <- read.table(paste0(prefix, "state_grid_position.txt"),
                          header = T)
     par(mfrow = c(8,11),
         mar = c(2, .5, .5, .1),
@@ -24,7 +24,7 @@ state.panel.plot <- function(x,
           type = "n",
           axes = F, xlab = "")
     }
-    title(title, outer = T)
+    title(title, outer = T, cex.main = 2)
 
     ## now loop through each state
     for (i in 1:length(state.name))
@@ -77,7 +77,7 @@ state.panel.plot <- function(x,
             abline(v = vline, col = "grey")
             abline(h = hline, col = "grey")
             mtext(my.state, side = 1, line = 0, outer = F,
-                  cex = .6)
+                  cex = .8)
         }
     }
 }
