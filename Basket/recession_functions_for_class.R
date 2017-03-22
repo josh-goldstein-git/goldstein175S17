@@ -10,7 +10,9 @@ state.panel.plot <- function(x,
                              ...)
 {
     ## panel positions for pseudo USA layout
-    pos.df <- read.table("state_grid_position.txt", header = T)
+    prefix <- "http://courses.demog.berkeley.edu/goldstein175/Basket/"
+    pos.df <- read.table(paste(prefix, "state_grid_position.txt"),
+                         header = T)
     par(mfrow = c(8,11),
         mar = c(2, .5, .5, .1),
         oma = c(2, 2, 3, 0),
