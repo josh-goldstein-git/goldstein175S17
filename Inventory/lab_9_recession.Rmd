@@ -268,10 +268,11 @@ college education.
 
 ```{r}
 ## Here is some code for code for plotting the unemployment rates
-## by education
+## by education. You can modify this slightly to produce a plot of tfr rather than "ue" (unemployment).
 plot(year.vec, ue.nocollege, pch = "n", type = "o",
      col = "red", ylim = c(0, .2),
-     ylim = "unemployment rate")
+     ylab = "unemployment rate")
+## the "lines()" functions adds a line to an existing plot
 lines(year.vec, ue.college, pch = "c", type = "o",
      col = "blue")
 ```
@@ -283,24 +284,23 @@ tfr.college.filt <- filter(tfr.college,
 ## this gives a running three year average
 ```
 
-Graded Question 2. Were the less educated hit harder by the recession?
-Give your answer in absolute terms (percentage points of unemployment
-increase) and in relative terms (e.g, 1.8 times as high in 2010 as
-2008)? [ < 50 words]
-
-Graded Question 3. Describe the differences between the time trend in
-fertility by education. Is there a difference in levels? Is there a
-difference in the time trend other than levels? (Hint: the data for
-the more educated is more noisy because it has fewer observations, so
-don't take the year-to-year fluctuations too seriously. Instead, look
-at the general trend over time.)
+Graded Question 2. From your plot, describe the differences between
+the time trend in fertility by education. Is there a difference in
+levels? Is there a difference in the time trend other than levels?
+(Hint: the data for the more educated is more noisy because it has
+fewer observations, so don't take the year-to-year fluctuations too
+seriously. Instead, look at the general trend over time.)
 [ A few sentences is fine < 50 words.]
+
+Graded Question 3. Looking at the plot of unemployment above, were the
+less educated hit harder by the recession? [ < 25 words]
 
 Graded Question 4. Does it appear that the more and less educated
 reacted to the Great Recession and its aftermath in different ways?
 Does this lend support to the hypotheses that one of the reasons that
 fertility hasn't recovered after the recession is that people are
-still unsure if the recovery will last? [ < 50 words]
+still unsure if the recovery will last? (Hint: there is no one correct
+answer here. Just give your reasoned interpretation.)[ < 50 words]
 
 
 
