@@ -1,0 +1,308 @@
+---
+title: "Econ/Demog C175 Lab for Week 9: Fertility and the Great
+Recession in the United States
+output: html_notebook
+---
+
+Note: this is an slightly adapted version of our in-class lab. There
+are no auto-checked answers of the multiple choice questions. The
+graded questions are at the end.
+
+# The Great Recession and Fertility in the United States
+
+To begin with let's look at the plot of historical fertility rates in
+the United States.
+
+Q1. Does a better economy ...
+
+A. Always lead to higher fertility
+
+B. Sometimes lead to higher fertility and sometimes lead to lower
+fertility
+
+C. Usually lead to higher fertility
+
+D. I see no relationship?
+
+
+Q2. In terms of our cost-of-time model, if a better economy raised
+fertility, then this would mean
+
+A. The substitution effect dominates the income effect
+
+B. The income effect dominates the substitution effect
+
+Q3. If men and women become more alike, then what would we expect?
+
+A. Stronger substitution effects
+
+B. Stronger income effects
+
+C. It's not so clear ...
+
+Q4. What do we expect in the Great Recession?
+
+A. Lower fertility
+
+B. Higher fertility
+
+C. No change
+
+Q5. What do we expect now that the Great Recession is over?
+
+A. Fertility to return to it's previous level?
+
+B. Fertility to be even higher, making up for lost time.
+
+C. Fertility to stay lower, until people are really sure the recovery
+will continue.
+
+# Data analysis
+
+We will look at unemployment rates and fertility rates.
+
+## Importing the data
+
+```{r}
+prefix <- "http://courses.demog.berkeley.edu/goldstein175/Basket/"
+usa.df <- read.csv(paste0(prefix,"usa_tfr_ue_by_year.csv"))
+state.df <- read.csv(paste0(prefix,"state_tfr_ue_by_year.csv"))
+```
+
+## The Great Recession
+
+### Nationally
+
+```{r}
+
+## save ourselves some typing
+tfr <- usa.df$tfr
+ue <- usa.df$ue
+year <- usa.df$year                     # 2001:2015
+## to compare UE in year of conception
+ue.before <- ue[year %in% 2001:2014]
+tfr.after <- tfr[year %in% 2002:2015]
+```
+
+We can plot the relationships
+```{r}
+par(mfrow = c(2,2))
+plot(year, tfr, type = "o",
+     col = "blue",
+     main = "Total Fertility Rates, USA")
+plot(year, ue, type = "o",
+     col = "red",
+     main = "Unemployment, USA")
+plot(ue, tfr, type = "p",
+     col = "black",
+     main = "TFR by unemployment, USA")
+abline(lm(tfr ~ ue))
+plot(ue.before, tfr.after,
+     main = "TFR by prior year's unemployment")
+abline(lm(tfr.after ~ ue.before))
+```
+
+Q. Is higher unemployment associated with lower fertility?
+
+A. Yes, throughout the whole period
+
+B. No, higher unemployment is associated with higher fertility.
+
+C. It depends on which period we look at
+
+D. I have no idea!
+
+Q. Does it make a difference if we look at conditions at the time of
+conception vs. time of birth?
+
+A. Not much
+
+
+Let's look at the period up to 2011, separately.
+
+```{r}
+
+s <- year %in% 2001:2011
+par(mfrow = c(2,2))
+plot(year, tfr, type = "o",
+     col = "blue",
+     main = "Total Fertility Rates, USA")
+points(year[s], tfr[s], pch = 19, col = "grey")
+plot(year, ue, type = "o",
+     col = "red",
+     main = "Unemployment, USA")
+points(year[s], ue[s], pch = 19, col = "grey")
+plot(ue, tfr, type = "p",
+     col = "black",
+     main = "TFR by unemployment, USA")
+points(ue[s], tfr[s], pch = 19, col = "grey")
+## abline(lm(tfr ~ ue))
+abline(lm(tfr.after ~ ue.before, subset = s),
+       col = "grey", lty = 2)
+plot(ue.before, tfr.after,
+     main = "TFR by prior year's unemployment")
+## abline(lm(tfr.after ~ ue.before))
+abline(lm(tfr.after ~ ue.before, subset = s),
+              col = "grey", lty = 2)
+points(ue.before[s], tfr.after[s], pch = 19, col = "grey")
+```
+
+So, we see that the recession seems to have lowered fertility on a
+national level.
+
+We can also look at the states to see if states that were harder hit,
+saw a bigger decline in fertility.
+
+Import a fancy function to plot an panel of states in the shape of the USA
+```{r}
+source(paste0(prefix,"recession_functions_for_class.R"))
+```
+
+Now display the state TFR and UE.
+
+```{r}
+
+state.panel.plot(x = state.df$year,
+                 y = state.df$tfr,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = 2.0,
+                 new = T,
+                 type = "l",
+                 col = "grey",
+                 legend.ylab = "tfr",
+                 legend.xlab = "year",
+                 title = "TFR by state, 2001-2015, all",
+                 ylim = c(1.5, 3))
+state.panel.plot(x = state.df$year,
+                 y = state.df$tfr.filt,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = 2.0,
+                 col = "blue",
+                 type = "l",
+                 lwd = 3,
+                 new = F,
+                 ylim = c(1.5, 3))
+
+```
+
+Now look at UE
+
+```{r}
+## now do unemployment
+state.panel.plot(x = state.df$year,
+                 y = state.df$ue,
+                 state = state.df$state.name,
+                 vline = 2008,
+                 hline = c(.05, .1),
+                 col = "red",
+                 type = "l",
+                 lwd = 2,
+                 new = T,
+                 title = "Unemployment by state, 2001-2015, all",
+                 ylim = c(0, .15))
+
+```
+
+
+```{r}
+## now do a scatter plot
+par(c(1,1))
+plot(state.df$ue,
+     state.df$tfr.filt, type = "p")
+m0 <- lm(tfr.filt ~ ue , data = state.df)
+abline(m0)
+```
+
+Q. Do "oil and gas " see less effect of Recession?
+
+Q. Does their fertility also not fall as much?
+
+Q. How about coastal states?
+
+Q. Which states have biggest increase in unemployment?
+
+Q. Which states have biggest decline in fertility?
+
+Q. Overall, it seems like income effect dominates. 200 years after
+Malthus, are we still in his regime?
+
+# Graded Questions
+
+We asked in class why fertility hasn't recovered as unemployment has
+gone back down to pre-recession levels. One explanation is that
+people's current circumstances have recovered, but that they are now
+more more uncertain (than before the recession) about their
+futures. The fact that the Great Recession happened at all has made
+people wary that something else bad will happen again.
+
+We don't have measures of attitudes in the American Community Survey
+that we are using to measure fertility and economic
+conditions. However, we can disaggregate the population into those
+with more and less education. If we assume that those with less
+education would be more at risk in the event of another economic
+downturn, then perhaps the less educated has also shown less recovery
+in fertility.
+
+In this last section, you will analyze the fertility of women with and
+without a college diploma.
+
+## Importing the data
+
+```{r}
+df <- read.csv("educ_tfr_unemp_by_year.csv")
+tfr.college <- df$tfr[df$college == TRUE]
+tfr.nocollege <- df$tfr[df$college == FALSE]
+ue.college <- df$ue[df$college == TRUE]
+ue.nocollege <- df$ue[df$college == FALSE]
+year.vec <- 2001:2015
+```
+
+## Looking at the recovery
+
+
+
+Graded Question 1. Submit a plot of the trends in TFR for those with a
+college education.
+
+```{r}
+## Here is some code for code for plotting the unemployment rates
+## by education
+plot(year.vec, ue.nocollege, pch = "n", type = "o",
+     col = "red", ylim = c(0, .2),
+     ylim = "unemployment rate")
+lines(year.vec, ue.college, pch = "c", type = "o",
+     col = "blue")
+```
+
+```{r}
+## You might want to plot the smoothed data
+tfr.college.filt <- filter(tfr.college,
+                             c(1/3,1/3,1/3))
+## this gives a running three year average
+```
+
+Graded Question 2. Were the less educated hit harder by the recession?
+Give your answer in absolute terms (percentage points of unemployment
+increase) and in relative terms (e.g, 1.8 times as high in 2010 as
+2008)? [ < 50 words]
+
+Graded Question 3. Describe the differences between the time trend in
+fertility by education. Is there a difference in levels? Is there a
+difference in the time trend other than levels? (Hint: the data for
+the more educated is more noisy because it has fewer observations, so
+don't take the year-to-year fluctuations too seriously. Instead, look
+at the general trend over time.)
+[ A few sentences is fine < 50 words.]
+
+Graded Question 4. Does it appear that the more and less educated
+reacted to the Great Recession and its aftermath in different ways?
+Does this lend support to the hypotheses that one of the reasons that
+fertility hasn't recovered after the recession is that people are
+still unsure if the recovery will last? [ < 50 words]
+
+
+
+
+
