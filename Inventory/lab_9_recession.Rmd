@@ -160,7 +160,7 @@ source(paste0(prefix,"recession_functions_for_class.R"))
 
 Now display the state TFR and UE.
 
-```{r}
+```{r, fig.height=8, fig.width=10}
 
 state.panel.plot(x = state.df$year,
                  y = state.df$tfr,
@@ -189,7 +189,7 @@ state.panel.plot(x = state.df$year,
 
 Now look at UE
 
-```{r}
+```{r, fig.height=8, fig.width=10}
 ## now do unemployment
 state.panel.plot(x = state.df$year,
                  y = state.df$ue,
@@ -215,7 +215,9 @@ m0 <- lm(tfr.filt ~ ue , data = state.df)
 abline(m0)
 ```
 
-Q. Do "oil and gas " see less effect of Recession?
+Here are some (optional) questions to consider:
+
+Q. Do "oil and gas" states (e.g. the Dakotas) see less effect of Recession?
 
 Q. Does their fertility also not fall as much?
 
@@ -225,15 +227,13 @@ Q. Which states have biggest increase in unemployment?
 
 Q. Which states have biggest decline in fertility?
 
-Q. Overall, it seems like income effect dominates. 200 years after
-Malthus, are we still in his regime?
 
 # Graded Questions
 
 We asked in class why fertility hasn't recovered as unemployment has
 gone back down to pre-recession levels. One explanation is that
 people's current circumstances have recovered, but that they are now
-more more uncertain (than before the recession) about their
+more uncertain (than before the recession) about their
 futures. The fact that the Great Recession happened at all has made
 people wary that something else bad will happen again.
 
@@ -251,7 +251,7 @@ without a college diploma.
 ## Importing the data
 
 ```{r}
-df <- read.csv("educ_tfr_unemp_by_year.csv")
+df <- read.csv(paste0(prefix,"educ_tfr_unemp_by_year.csv"))
 tfr.college <- df$tfr[df$college == TRUE]
 tfr.nocollege <- df$tfr[df$college == FALSE]
 ue.college <- df$ue[df$college == TRUE]
