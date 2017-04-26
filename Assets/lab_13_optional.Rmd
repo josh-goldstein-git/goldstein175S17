@@ -1,0 +1,42 @@
+---
+title: "Lab 13: (Optional) Independent Micro-Project Extending Any Lab"
+output: html_notebook
+---
+
+# Overview
+
+The idea of this final (optional) lab is to give you a chance to investigate a question of your choice using data from any of the semester's lab. For example, you could look to see if the Mareil boatlift had a labor market effect on a particular sub-group that we did not investigate. Or, you could do a new analysis of the relationship between crude birth and death rates in Sweden during and after the demographic transition. Or ... anything of your choice. The only restrictions are that you limit yourselves to the datasets we've already used and you write up your results concisely according to the guidelines below.
+
+# Due Date
+
+This lab is due on May 1, the first Monday of Reading/Review/Recitation week.
+
+(*Important*: Please see the bCourses "quiz" section for any further details on how to turn this Lab in -- for example, the format of how to turn in your graphics, write-up, and R-code.)
+
+
+# Format 
+
+Because of the limits on our grading capacity, we're asking you to present your results in a very condensed form. Please limit yourselves to :
+
+* 1 figure or panel of figures (e.g., using 'par(mfrow = c(2,2))') or 1 table of numbers
+* 1 page of text
+* An appendix with the R-code in .Rmd format (You can save one of the current labs under a new name and use it as a template -- or you can create a new "R Notebook" from the Rstudio menu.)
+
+# Text requirements. 
+
+Your 1-page write-up should include.
+
+A. The question you are trying to answer [ A sentence or two.]
+
+B. Why this question is of interest [ A sentence or two.]
+
+C. A brief description of the data you are using [ Please include the number of the lab that used this data.]
+
+D. What you found [ A paragraph or so.]
+
+E. Limitations [A paragraph or so on what the limitations of your analysis are and what kind of data and analysis could answer your questions more definitively.]
+
+# Grading
+
+Lab 13 is optional. If you do this lab, your grade  will be used to fill in for a lab that you have missed or for a lab on which you received a lower grade. 
+
