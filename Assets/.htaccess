@@ -1,0 +1,3 @@
+IndexOptions FancyIndexing HTMLTable
+HeaderName labHeader.html
+IndexIgnore *.html
