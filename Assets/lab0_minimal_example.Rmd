@@ -1,0 +1,87 @@
+---
+title: "A minimal example"
+output: html_notebook
+---
+
+This is a minimal example for everyone to try to get started using R in our Rstudio Cloud environment inside a notebook. 
+
+
+Let's calculate a fertility rate. Say there were 10 births to 45 women aged 20-25 in 1987.
+
+```{r}
+nBx = 10
+nNx.female = 45
+nFx = nBx/nNx.female
+print(nFx)
+```
+
+R is a vectorized language. Here as an example using vectors, taken from Keyfitz and Flieger (1968, page 312) for 1851 France.
+
+```{r}
+
+## some data typed in by hand by Josh
+million = 10^6 # to save us typing and to make code more readable
+x <- c(15, 20, 25, 30, 35, 40) # ages at start of each interval, equivalent to 'seq(15, 40, 5)'
+nKx.female.vec = c(1.55, 1.52, 1.44, 1.35, 1.27, 1.17) * million # suffix .vec just for us humans 
+nBx.vec = c(39, 212, 283, 235, 147, 54) * 1000
+
+## now calculate age-specific fertility rates
+nFx.vec <- nBx.vec/nKx.female.vec   # can add, subtract, multiply and divide vectors 
+## (Note this is element by element and not matrix multiplication, which has a different syntax)
+
+## Plot the result
+plot(x = x, y = nFx.vec, 
+     type = "o",   # plotting type "o" means points _o_ver lines (try changing to "p", or "l", or "b")
+     ylim = c(0, .25))
+title("Period Age-specific Fertility in France, 1851")
+```
+
+
+Let's do one more example, calculating the TFR in France in 1851. The objects carry over from chunk to chunk. So we can just pick up where we left off ...
+
+```{r}
+n = rep(x = 5, times = length(x)) ## a vector of 5s of the right length
+TFR = sum(n * nFx.vec) ## sum of the vector that results from the product of n * nFx.vec
+print(TFR)
+NRR = TFR * 0.57 * 0.4886
+NRR
+```
+
+
+Some exercises:
+
+
+1. Create a new chunk and use R to calculate the NRR using the approximation
+
+$$
+NRR = TFR \cdot \ell_\mu \cdot p_{female} 
+$$
+
+
+with the survival to the mean age of childbearing $\ell_\mu = 0.58$, the mean age of childbearing $\mu = 29.7$, and the proportion female at birth $p_{female} = 0.4886. (Note if you play with your mouse on top of the equation above -- or try maybe inserting a carriage return -- it should display nicely.)
+
+2. Read the help page for 'plot' in the "Help" tab of the lower-right pane of your Rstudio session. See if you can re-do the graph of age-specific fertility in 1851 France, changing the color of the lines and points to "red" and changing the label on the x-axis to "Age at start of interval". (Hint: the command for how to change the labels of the axes is in the main part of the help page, but for the color you'll have to look under "Examples".)
+
+
+Run the next chunk in order to import the necessary files for self-grading of the next multiple choice question.
+
+```{r}
+source("/BFDW/check_lab0_minimal.R")
+source("/BFDW/check_functions.R")
+```
+
+
+
+3. Answer the following multiple choice question. If the NRR in France were found to be 0.97, does that mean that in 1851 
+
+A. the intrinsic growth rate was less than zero
+
+B. the observed population growth rate was less than zero
+
+C. both of the above
+
+{{
+answer: yes, but this is the growth rate of the closed, stable population with these rates, not necessarily the observed growth rate of the open, actual population. In fact, according to K&F, the observed population had a rate of natural ecrease of about 0.5 percent.
+hint: the intrinsic rate is what would be observed if rates were held constant for a long time in a closed (no-migration) population.
+}}
+
